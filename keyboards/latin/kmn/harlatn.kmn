@@ -1,0 +1,95 @@
+﻿c harlatn.kmn
+c 
+c Harari (Lâtîn harfi) 2.1
+c 
+c Keyboard layout designed for Harari (Latin orthography).
+c 
+c © State Library of Victoria and the Australian Saay Harari Association 2008
+c 
+c This work is licensed under the Creative Commons
+c Attribution-Non-Commercial-Share Alike 2.5 Australia License.
+c To view a copy of this licence, visit
+c http://creativecommons.org/licenses/by-nc-sa/2.5/au/ or send a letter to
+c Creative Commons, 171 Second Street, Suite 300,
+c San Francisco, California 94105, USA.
+c 
+c This keyboard source file was developed by Vicnet,
+c a division of the State Library of Victoria as part of
+c the Open Road project’s 'Enabling Community Languages' initiative.
+c The keyboard layout was developed for the
+c Australian Saay Harari Association.
+c 
+c Release history:
+c 2.1  2009-08-31
+c * added CTRL-ALT sequences to RALT sequences (fix for OOo 3.1 and Firefox 3.5)
+c 2.0  2009-01-27
+c * support for revised Latin orthography
+c 
+c Andrew Cunningham    2009-08-31
+c support AT openroad.net.au
+c lang.support AT gmail.com
+
+store(&VERSION) '7.0'
+store(&Bitmap) "har.bmp"
+store(&COPYRIGHT) '© 2009 State Library of Victoria and the Australian Saay Harari Association'
+store(&MESSAGE) 'Harari Unicode keyboard layout, using the Latin orthography.'
+store(&Name) "Harari (Lâtîn harfi)"
+store(&VISUALKEYBOARD) 'harlatn.kvk'
+store(&ETHNOLOGUECODE) 'har'
+
+begin Unicode > use(controls)  
+
+store(vowels) "aeiouAEIOU"  
+store(longVowels) U+00E2 U+00EA U+00EE U+00F4 U+00FB U+00C2 U+00CA U+00CE U+00D4 U+00DB 
+store(consonantKey) "adhszADHSZtT"
+store(consonantChar) U+0227 U+1E0B U+1E23 U+1E61 U+017C U+0226 U+1E0A U+1E22 U+1E60 U+017B U+1e6b U+1e6a     
+store(level34Key) [RALT K_1] [RALT K_2] [RALT K_3] [RALT K_4] [RALT K_5][RALT K_6] \
+                  [RALT K_7] [RALT K_8] [RALT K_9] [RALT K_0] [RALT K_HYPHEN] \
+                  [RALT K_EQUAL] [SHIFT RALT K_HYPHEN][RALT K_LBRKT] \
+                  [SHIFT RALT K_LBRKT] [RALT K_RBRKT] [SHIFT RALT K_RBRKT] \
+                  [RALT K_BKSLASH] [SHIFT RALT K_BKSLASH]
+store(level34Key_alt) [CTRL ALT K_1] [CTRL ALT K_2] [CTRL ALT K_3] [CTRL ALT K_4] \
+                      [CTRL ALT K_5][CTRL ALT K_6] [CTRL ALT K_7] [CTRL ALT K_8] \
+                      [CTRL ALT K_9] [CTRL ALT K_0] [CTRL ALT K_HYPHEN] \
+                      [CTRL ALT K_EQUAL] [SHIFT CTRL ALT K_HYPHEN]\
+                      [CTRL ALT K_LBRKT] [SHIFT CTRL ALT K_LBRKT] [CTRL ALT K_RBRKT] \
+                      [SHIFT CTRL ALT K_RBRKT] [CTRL ALT K_BKSLASH] \
+                      [SHIFT CTRL ALT K_BKSLASH]
+store(level34Char) U+2018 U+201C U+2039 U+00AB U+2026 U+00A9 U+00BB U+203A U+201D \
+                   U+2019 U+2013 U+2014 U+2012 "[{]}\|"
+store(diaVowelsKey) "[{" 
+store(diaConsonantsKey) "]}"
+store(stressKey) "\|" 
+
+group(controls) using keys
+c RALT and CTRL+ALT key sequences do not fire a NOMATCH rule.
+c NOMATCH only fires if the keystroke would generate a charcater on the underlying keyboard
+c http://www.tavultesoft.com/keymandev/documentation/70/reference_nomatch.html
+c The controls group is used initially to allow the RALT rules to be executed.
+c then pass control to the contsraints group.
++ any(level34Key) > index(level34Char,1)  
++ any(level34Key_alt) > index(level34Char,1)   
+nomatch > use(constraints)
+
+group(constraints) using keys 
+c Prevent output for invalid key sequences using diacriitcs.
+notany(vowels) + any(diaVowelsKey) > beep context
+notany(consonantKey) + any(diaConsonantsKey) > beep context 
+nomatch > use(main)
+
+group(main) using keys
+c Main keyboard rules.
+any(vowels) + any(diaVowelsKey) > index(longVowels,1) 
+any(consonantKey) + any(diaConsonantsKey) > index(consonantChar,1)  
++ any(stressKey) > U+02BC 
+    
+any(longVowels) + [SHIFT K_BKSP] > index(vowels,1)
+any(consonantChar) + [SHIFT K_BKSP] > index(consonantKey,1) 
+
+c key sequences for internal documentation
+c + [K_oE2] > U+0302
+c + [SHIFT K_oE2] > U+0307
+c + [RALT K_oE2] > U+25CC
+c + [CTRL ALT K_oE2] > U+25CC
+
+c EOF

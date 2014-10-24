@@ -1,0 +1,251 @@
+﻿c harethi.kmn
+c 
+c Harari (Sabai harfi) 2.1
+c 
+c This keyboard layout designed for Harari (Revised Ethiopic orthography).
+c 
+c It uses the Unified keyboard layout
+c based on the Latin orthography.
+c 
+c © State Library of Victoria and the Australian Saay Harari Association 2008
+c 
+c This work is licensed under the Creative Commons
+c Attribution-Non-Commercial-Share Alike 2.5 Australia License.
+c To view a copy of this licence, visit
+c http://creativecommons.org/licenses/by-nc-sa/2.5/au/ or send a letter to
+c Creative Commons, 171 Second Street, Suite 300,
+c San Francisco, California 94105, USA.
+c 
+c This keyboard source file was developed by Vicnet,
+c a division of the State Library of Victoria as part of
+c the Open Road project’s Language enablement initiative.
+c The keyboard layout was developed for the
+c Australian Saay Harari Association.
+c 
+c 
+c Andrew Cunningham    2009-10-10
+c support AT openroad.net.au
+c lang.support AT gmail.com
+
+store(&Version) "7.0"
+store(&BITMAP) 'harethi.bmp'
+store(&COPYRIGHT) '© 2009 State Library of Victoria and the Australian Saay Harari Association'
+store(&Message) "Harari Unicode keyboard layout, using the Ethiopic/Ge'ez orthography."
+store(&Name) "Harari (Sabai harfi)"
+store(&ETHNOLOGUECODE) 'har'
+store(&VISUALKEYBOARD) 'harethi.kvk'
+
+begin Unicode > use(main)  
+
+store(vowelsLC) "aeiou"
+store(vowelsUC) "AEIOU"
+store(vowelsChar) U+12a0 U+12a4 U+12a2 U+12a6 U+12a1
+c store(stressedVowels) outs(vowelsChar) U+12A3 U+12A7
+store(stressedVowels) outs(vowelsChar) U+12A3 U+0301
+
+
+store(stressKey) "\|"
+store(longVowelKey) "[{"    
+store(addConsonantKey) "]}"   
+
+store(consonantKeysLC) "lhmrsqbtnkwzydjgxcfpv"
+store(consonantKeysUC) "LHMRSQBTNKWZYDJGXCFPV"
+store(consonantChars) U+120D U+1215 U+121D U+122D U+1235 U+1245 U+1265 U+1275 U+1295 U+12AD U+12CD U+12DD U+12ED U+12F5 U+1305 U+130D U+1325 U+132D U+134D U+1355 U+126D 
+c store(consonantIn) ""
+c store(consonantOut) ""
+
+c ሀ ለ ሐ መ ሠ ረ ሰ ሸ ቀ በ ተ ቸ ኀ ነ ኘ አ ከ ኸ ወ ዐ ዘ ዠ የ ደ ዸ ጀ ገ ጠ ጨ ጸ ፈ ፐ ቨ
+store(series1) U+1200 U+1208 U+1210 U+1218 U+1220 U+1228 U+1230 U+1238 U+1240 U+1260 U+1270 U+1278 U+1280 U+1290 U+1298 U+12A0 U+12A8 U+12B8 U+12C8 U+12D0 U+12D8 U+12E0 U+12E8 U+12F0 U+12F8 U+1300 U+1308 U+1320 U+1328 U+1338 U+1348 U+1350 U+1268 U+1330 U+2DB0 U+1340 
+c ሁ ሉ ሑ ሙ ሡ ሩ ሱ ሹ ቁ ቡ ቱ ቹ ኁ ኑ ኙ ኡ ኩ ኹ ዉ ዑ ዙ ዡ ዩ ዱ ዹ ጁ ጉ ጡ ጩ ጹ ፉ ፑ ቩ
+store(series2) U+1201 U+1209 U+1211 U+1219 U+1221 U+1229 U+1231 U+1239 U+1241 U+1261 U+1271 U+1279 U+1281 U+1291 U+1299 U+12A1 U+12A9 U+12B9 U+12C9 U+12D1 U+12D9 U+12E1 U+12E9 U+12F1 U+12F9 U+1301 U+1309 U+1321 U+1329 U+1339 U+1349 U+1351 U+1269 U+1331 U+2DB1 U+1341
+c ሂ ሊ ሒ ሚ ሢ ሪ ሲ ሺ ቂ ቢ ቲ ቺ ኂ ኒ ኚ ኢ ኪ ኺ ዊ ዒ ዚ ዢ ዪ ዲ ዺ ጂ ጊ ጢ ጪ ጺ ፊ ፒ ቪ
+store(series3) U+1202 U+120A U+1212 U+121A U+1222 U+122A U+1232 U+123A U+1242 U+1262 U+1272 U+127A U+1282 U+1292 U+129A U+12A2 U+12AA U+12BA U+12CA U+12D2 U+12DA U+12E2 U+12EA U+12F2 U+12FA U+1302 U+130A U+1322 U+132A U+133A U+134A U+1352 U+126A U+1332 U+2DB2 U+1342
+c ሃ ላ ሓ ማ ሣ ራ ሳ ሻ ቃ ባ ታ ቻ ኃ ና ኛ ኣ ካ ኻ ዋ ዓ ዛ ዣ ያ ዳ ዻ ጃ ጋ ጣ ጫ ጻ ፋ ፓ ቫ
+store(series4) U+1203 U+120B U+1213 U+121B U+1223 U+122B U+1233 U+123B U+1243 U+1263 U+1273 U+127B U+1283 U+1293 U+129B U+12A3 U+12AB U+12BB U+12CB U+12D3 U+12DB U+12E3 U+12EB U+12F3 U+12FB U+1303 U+130B U+1323 U+132B U+133B U+134B U+1353 U+126B U+1333 U+2DB3 U+1343
+c ሄ ሌ ሔ ሜ ሤ ሬ ሴ ሼ ቄ ቤ ቴ ቼ ኄ ኔ ኜ ኤ ኬ ኼ ዌ ዔ ዜ ዤ ዬ ዴ ዼ ጄ ጌ ጤ ጬ ጼ ፌ ፔ ቬ
+store(series5) U+1204 U+120C U+1214 U+121C U+1224 U+122C U+1234 U+123C U+1244 U+1264 U+1274 U+127C U+1284 U+1294 U+129C U+12A4 U+12AC U+12BC U+12CC U+12D4 U+12DC U+12E4 U+12EC U+12F4 U+12FC U+1304 U+130C U+1324 U+132C U+133C U+134C U+1354 U+126C U+1334 U+2DB4 U+1344
+c ህ ል ሕ ም ሥ ር ስ ሽ ቅ ብ ት ች ኅ ን ኝ እ ክ ኽ ው ዕ ዝ ዥ ይ ድ ዽ ጅ ግ ጥ ጭ ጽ ፍ ፕ ቭ
+store(series6) U+1205 U+120D U+1215 U+121D U+1225 U+122D U+1235 U+123D U+1245 U+1265 U+1275 U+127D U+1285 U+1295 U+129D U+12A5 U+12AD U+12BD U+12CD U+12D5 U+12DD U+12E5 U+12ED U+12F5 U+12FD U+1305 U+130D U+1325 U+132D U+133D U+134D U+1355 U+126D U+1335 U+2DB5 U+1345
+c ሆ ሎ ሖ ሞ ሦ ሮ ሶ ሾ ቆ ቦ ቶ ቾ ኆ ኖ ኞ ኦ ኮ ኾ ዎ ዖ ዞ ዦ ዮ ዶ ዾ ጆ ጎ ጦ ጮ ጾ ፎ ፖ ቮ
+store(series7) U+1206 U+120E U+1216 U+121E U+1226 U+122E U+1236 U+123E U+1246 U+1266 U+1276 U+127E U+1286 U+1296 U+129E U+12A6 U+12AE U+12BE U+12CE U+12D6 U+12DE U+12E6 U+12EE U+12F6 U+12FE U+1306 U+130E U+1326 U+132E U+133E U+134E U+1356 U+126E U+1336 U+2DB6 U+1346
+
+store(longVowelsInput) outs(series2) outs(series3) outs(series5) outs(series7)  
+store(syllableWVowel) outs(series1) outs(series2) outs(series3) outs(series4) outs(series5) outs(series7)
+
+store(groupH) "hH"
+store(groupN) "nN" 
+
+store(extendedCharsIn) U+1215 U+1235 U+12a0 U+12f5 U+12dd U+1275
+store(extendedCharsOut) U+1205 U+133d U+12d5 U+1335 U+2db5 U+1225
+
+store(validStress) outs(series6) outs(stressedVowels) U+1275 U+1235 U+132D U+130D U+12AD U+12F5 U+12DD U+1325        
+
+c store(digits) '123456789'
+store(digits) '123456789' 
+store(units) U+1369 U+136a U+136b U+136c U+136d U+136e U+136f U+1370 U+1371
+store(tens) U+1372 U+1373 U+1374 U+1375 U+1376 U+1377 U+1378 U+1379 U+137a
+
+store(numbers) outs(units) outs(tens) U+137b U+137c
+
+group(main) using keys 
+      
+c Long digraphs
+
+U+132d U+132d + any(groupH) > U+127d U+127d    
+U+12f5 U+12f5 + any(groupH) > U+1345 U+1345
+U+130d U+130d + any(groupH) > U+1285 U+1285  
+U+130d U+130d + any(groupN) > U+129d U+129d
+U+12ad U+12ad + any(groupH) > U+12bd U+12bd
+U+1235 U+1235 + any(groupH) > U+123d U+123d
+c U+1275 U+1275 + any(groupH) > U+1225 U+1225
+U+1325 U+1325 + any(groupH) > U+12fd U+12fd
+U+12dd U+12dd + any(groupH) > U+12e5 U+12e5
+
+c series 6: digraph support
+
+c U+1275 + any(groupH) > U+1225                          c th
+c U+1275 any(stressKey) + any(groupH) > U+1275 U+1215    c t'h
+c U+1275 any(stressKey) U+1275 + any(groupH) > U+1275 U+1225 c t'th
+
+U+1235 + any(groupH) > U+123D	                       c sh
+U+1235 any(stressKey) + any(groupH) > U+1235 U+1215    c s'h 
+U+1235 any(stressKey) U+1235 + any(groupH) > U+1235 U+123D c s'sh
+
+U+132D + any(groupH) > U+127D                          c ch 
+U+132D any(stressKey) + any(groupH) > U+132D U+1215    c c'h 
+U+132D any(stressKey) U+132D + any(groupH) > U+132D U+127D c c'ch
+
+U+130D + any(groupH) > U+1285	                       c gh
+U+130D any(stressKey) + any(groupH) > U+130D U+1215    c g'h 
+U+130D any(stressKey) U+130D + any(groupH) > U+130D U+1285 c g'gh
+
+U+130D + any(groupN) > U+129D	                       c gn 
+U+130D any(stressKey) + any(groupN) > U+130D U+1295    c g'n 
+U+130D any(stressKey) U+130D + any(groupN) > U+130D U+129D c g'gn
+
+U+12AD + any(groupH) > U+12BD	                       c kh 
+U+12AD any(stressKey) + any(groupH) > U+12AD U+1215    c k'h 
+U+12AD any(stressKey) U+12AD + any(groupH) > U+12AD U+12BD c k'kh
+
+U+12F5 + any(groupH) > U+1345                          c dh  
+U+12F5 any(stressKey) + any(groupH) > U+12F5 U+1215    c d'h 
+U+12F5 any(stressKey) U+12F5 + any(groupH) > U+12F5 U+1345 c d'dh
+
+U+12DD + any(groupH) > U+12E5                          c zh  
+U+12DD any(stressKey) + any(groupH) > U+12DD U+1215    c z'h 
+U+12DD any(stressKey) U+12DD + any(groupH) > U+12DD U+12E5 c z'zh
+
+U+1325 + any(groupH) > U+12FD                          c xh  
+U+1325 any(stressKey) + any(groupH) > U+1325 U+1215    c x'h  
+U+1325 any(stressKey) U+1325 + any(groupH) > U+1325 U+12FD c x'xh
+
+c series 6: other characters
+
++ any(consonantKeysLC) > index(consonantChars,1) 
++ any(consonantKeysUC) > index(consonantChars,1)  
+
+c series 1,2,3,5,7
+any(series6) + "a" > index(series1,1)
+any(series6) + "u" > index(series2,1)
+any(series6) + "i" > index(series3,1)  
+any(series6) + "e" > index(series5,1)
+any(series6) + "o" > index(series7,1)   
+
+any(series6) + "A" > index(series1,1)
+any(series6) + "U" > index(series2,1)
+any(series6) + "I" > index(series3,1)  
+any(series6) + "E" > index(series5,1)
+any(series6) + "O" > index(series7,1)
+
+any(series6) any(stressKey) + any(vowelsLC) > index(series6,1) index(vowelsChar,3)       
+any(series6) any(stressKey) + any(vowelsUC) > index(series6,1) index(vowelsChar,3)
+
+
+c long vowels
+any(series1) + any(longVowelKey) > index(series4,1) 
+c any(longVowelsInput) + any(longVowelKey) > index(longVowelsInput,1) U+12A7
+any(longVowelsInput) + any(longVowelKey) > index(longVowelsInput,1) U+0301 
+
+c suppress "[{" character from being typed when long vowel isn't being generated.
+any(series6) + any(longVowelKey) > context beep
+any(series4) + any(longVowelKey) > context beep
+c U+12A7 + any(longVowelKey) > context beep
+U+0301 + any(longVowelKey) > context beep
+
+c isolated vowels
++ "`" > U+12A5
+U+12A5 + any(vowelsLC) > index(vowelsChar,2)   
+U+12A5 + any(vowelsUC) > index(vowelsChar,2)   
+
+any(stressedVowels) + any(stressKey) > context U+12a5   
+any(syllableWVowel) + any(stressKey) > context U+12a5 
+any(extendedCharsIn) + any(addConsonantKey) > index(extendedCharsOut,1) 
+c any(series6) + any(stressKey) > context
+
+c provide alternative method of producing a_dot_above
++ [RALT K_A] > U+12D5 
++ [LCTRL LALT K_A] > 'ዕ'
+
+c supress "]}" from being produced when no exteded consonant is being generated.
+notany(extendedCharsIn) + any(addConsonantKey) > context beep 
+
+c supress "\|" from being produced when no no digraph is being suppressed or stress vowel being generated..
+notany(validStress) + any(stressKey) > context beep     
+
++ "a" > U+12a0
++ "e" > U+12a4
++ "i" > U+12a2
++ "o" > U+12a6
++ "u" > U+12a1
+U+12a0 + any(stressKey) > U+12a3
++ "A" > U+12a0
++ "E" > U+12a4
++ "I" > U+12a2
++ "O" > U+12a6
++ "U" > U+12a1
+
+c punctuation
+
++ "," > ","   
++ "." > "."
++ ";" > ";" 
++ ":" > ":"
++ "<" > "<"
++ ">" > ">" 
+
+c Ethiopic punctuation
++ [SHIFT K_SPACE] > U+1361 " "   c Ethiopic word seperator
++ [RALT K_COMMA] > U+1363   c Ethiopic comma 
++ [RALT K_PERIOD] > U+1362
++ [RALT K_COLON] > U+1364 
++ [SHIFT RALT K_COLON] > U+1365
++ [SHIFT RALT K_COMMA] > U+1367  
+
++ [LCTRL LALT K_COMMA] > '፣'
++ [LCTRL LALT K_PERIOD] > '።'
++ [LCTRL LALT K_COLON] > '፤'
++ [SHIFT LCTRL LALT K_COLON] > '፥'
++ [SHIFT LCTRL LALT K_COMMA] > '፧'
+c + "\" > U+1366  c Ethiopic preface colon
++ [SHIFT RALT K_PERIOD] > U+1368  c Ethiopic paragraph seperator
++ [SHIFT LCTRL LALT K_PERIOD] > '፨'
+
+c Additional characters
+
++ [RALT K_C] > U+00a9  
++ [LCTRL LALT K_C] > '©'
+
+c Ethiopic digits
++ "~" > dk(1)
+c dk(1) + '1' > U+1369
+any(numbers) + any(digits) > context index(units,2)
+dk(1) + any(digits) > index(units,2)  
+any(units) + "0" > index(tens,1) 
+U+1372 + "0" > U+137b
+U+137b "0" + "0" > U+137c     
+
+c Need instructions on typing Ethiopic digits. REfer to http://www.geez.org/
+
+dk(1) + "~" > "~"
+                     
+c EOF

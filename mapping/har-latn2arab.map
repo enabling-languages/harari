@@ -1,0 +1,706 @@
+﻿; This file was created by <author> using TECkitMappingEditorU.exe v3.0.1.0 on 21/09/2009.
+;   Conversion Type = Unicode_to_from_Unicode
+;   Left-hand side font = Charis SIL;11.25
+;   Right-hand side font = Lateef;14.25
+;   Main Window Position = 0,4,804,738
+;   Left-hand side Character Map Window Position = 805,0,457,436
+;   Right-hand side Character Map Window Position = 813,439,457,444
+
+LHSName                 "harLatn"
+RHSName                 "harArab"
+LHSDescription          "Harari Latin orthography"
+RHSDescription          "Harari Arabic orthography"
+Version                 "1"
+Contact                 "mailto:support@openroad.net.au"
+RegistrationAuthority   "State Library of Victoria "
+RegistrationName        "Harari Latin to Arabic"
+Copyright               "© 2009 State Library of Victoria and the Australian Saay Harari Association. All rights reserved."
+LHSFlags                ()
+RHSFlags                ()
+
+pass(Unicode)
+
+Class[upper] = ('A'..'Z' 'Â' 'Ê' 'Î' 'Ô' 'Û' 'Ȧ' 'Ḋ' 'Ḣ' 'Ṡ' 'Ṫ' 'Ż')
+Class[lower] = ('a'..'z' 'â' 'ê' 'î' 'ô' 'û' 'ȧ' 'ḋ' 'ḣ' 'ṡ' 'ṫ' 'ż')
+
+[upper] > [lower]
+ 
+pass(Unicode)
+
+Class[seperator] = ("'" '’')
+
+Class[lower] = ('a'..'z' 'â' 'ê' 'î' 'ô' 'û' 'ȧ' 'ḋ' 'ḣ' 'ṡ' 'ṫ' 'ż')
+
+[lower]=c1 [seperator]=sep0 [lower]=c2 > @c1 'ʼ' @c2
+
+pass(Unicode)
+; Exceptions to straight orthographic conversion
+; Personal names - case sensitive
+
+Class[harfi] = ('a'..'z' 'â' 'ê' 'î' 'ô' 'û' 'ȧ' 'ḋ' 'ḣ' 'ṡ' 'ṫ' 'ż')
+; Harari latin characters
+
+Define NON_HARFI ^[harfi] _ ^[harfi]
+; Macro to specify a context before and after the string
+; where context is non-Harari letters.
+; The macro is used to identify if the character sequence is a word.
+; Ensures that exceptions are only matched if they are words,
+; rather than strings that are part of words.
+
+'abdullâhi' / NON_HARFI	>	'عَبْدُ اللَّهِ'
+'Abdullâhi'	<	'عَبْدُ اللَّهِ' / NON_HARFI
+'abdalla' / NON_HARFI	>	'عَبْدَ اللَّه'
+'Abdalla'	<	'عَبْدَ اللَّه' / NON_HARFI
+'abdurrahmân' / NON_HARFI	>	'عَبْدُالرَّحْمَن'
+'Abdurrahmân'	<	'عَبْدُالرَّحْمَن' / NON_HARFI
+'abdurrahmîn' / NON_HARFI	>	'عَبْدُالرَّحِيم'
+'Abdurrahmîn'	<	'عَبْدُالرَّحِيم' / NON_HARFI
+'abdulmâlik' / NON_HARFI	>	'عَبْدُ الْمَالِك'
+'Abdulmâlik'	<	'عَبْدُ الْمَالِك' / NON_HARFI
+'abdulmalik' / NON_HARFI	>	'عَبْدُالْمَلِك'
+'Abdulmalik'	<	'عَبْدُالْمَلِك' / NON_HARFI
+'abdulquddûs' / NON_HARFI	>	'عَبْدُ الْقُدُّوس'
+'Abdulquddûs'	<	'عَبْدُ الْقُدُّوس' / NON_HARFI
+
+'abdussalâm' / NON_HARFI	>	'عَبْدُ السَّلَام'
+'Abdussalâm'	<	'عَبْدُ السَّلَام' / NON_HARFI
+
+'abdulmuheymin' / NON_HARFI	>	'عَبْدُ الْمُهَيْمِن'
+'Abdulmuheymin'	<	'عَبْدُ الْمُهَيْمِن' / NON_HARFI
+'abdulmuʼmin' / NON_HARFI	>	'عَبْدُ الْمُؤْمِن'
+'Abdulmuʼmin'	<	'عَبْدُ الْمُؤْمِن' / NON_HARFI
+'abduljabbâr' / NON_HARFI	>	'عَبْدُالْجَبَّار'
+'Abduljabbâr'	<	'عَبْدُالْجَبَّار' / NON_HARFI
+'abdulazîz' / NON_HARFI	>	'عَبْدُالْعَزِيز'
+'Abdulazîz'	<	'عَبْدُالْعَزِيز' / NON_HARFI
+'abdulkhâliq' / NON_HARFI	>	'عَبْدُالْخَالِق'
+'Abdulkhâliq'	<	'عَبْدُالْخَالِق' / NON_HARFI
+'abdulmutakabbir' / NON_HARFI	>	'عَبْدُالْمُتَكَبِّر'
+'Abdulmutakabbir'	<	'عَبْدُالْمُتَكَبِّر' / NON_HARFI
+'abdulmusawwir' / NON_HARFI	>	'عَبْدُالْمُصَوِّر'
+'Abdulmusawwir'	<	'عَبْدُالْمُصَوِّر' / NON_HARFI
+'abdulbâriʼ' / NON_HARFI	>	'عَبْدُالْبَارِئ'
+'Abdulbâriʼ'	<	'عَبْدُالْبَارِئ' / NON_HARFI
+'abdulqahhâr' / NON_HARFI	>	'عَبْدُالْقَهَّار'
+'Abdulqahhâr'	<	'عَبْدُالْقَهَّار' / NON_HARFI
+'abdulghaffâr' / NON_HARFI	>	'عَبْدُالْغَفَّار'
+'Abdulghaffâr'	<	'عَبْدُالْغَفَّار' / NON_HARFI
+'abdurrazzâq' / NON_HARFI	>	'عَبْدُالرَّزَّاق'
+'Abdurrazzâq'	<	'عَبْدُالرَّزَّاق' / NON_HARFI
+'abdulwahhâb' / NON_HARFI	>	'عَبْدُالْوَهَّاب'
+'Abdulwahhâb'	<	'عَبْدُالْوَهَّاب' / NON_HARFI
+'abdul alîm' / NON_HARFI	>	'عَبْدُالْعَلِيم'
+'Abdul alîm'	<	'عَبْدُالْعَلِيم' / NON_HARFI
+'abdulfattâh' / NON_HARFI	>	'عَبْدُالْفَتَّاح'
+'Abdulfattâh'	<	'عَبْدُالْفَتَّاح' / NON_HARFI
+'abdulbâsix' / NON_HARFI	>	'عَبْدُالْبَاسِط'
+'Abdulbâsix'	<	'عَبْدُالْبَاسِط' / NON_HARFI
+'abdulqâbid' / NON_HARFI	>	'عَبْدُالْقَابِض'
+'Abdulqâbid'	<	'عَبْدُالْقَابِض' / NON_HARFI
+'abdurrâfiʼ' / NON_HARFI	>	'عَبْدُالرَّافِع'
+'Abdurrâfiʼ'	<	'عَبْدُالرَّافِع' / NON_HARFI
+'abdulkhâfid' / NON_HARFI	>	'عَبْدُالْخَافِض'
+'Abdulkhâfid'	<	'عَبْدُالْخَافِض' / NON_HARFI
+'abdulbasîr' / NON_HARFI	>	'عَبْدُالْبَصِير'
+'Abdulbasîr'	<	'عَبْدُالْبَصِير' / NON_HARFI
+'abdussamîʼ' / NON_HARFI	>	'عَبْدُالسَّمِيع'
+'Abdussamîʼ'	<	'عَبْدُالسَّمِيع' / NON_HARFI
+'abdulkhabîr' / NON_HARFI	>	'عَبْدُالْخَبِير'
+'Abdulkhabîr'	<	'عَبْدُالْخَبِير' / NON_HARFI
+'abdullaxîf' / NON_HARFI	>	'عَبْدُاللَّطِيف'
+'Abdullaxîf'	<	'عَبْدُاللَّطِيف' / NON_HARFI
+'abdul azîm' / NON_HARFI	>	'عَبْدُالْعَظِيم'
+'Abdul azîm'	<	'عَبْدُالْعَظِيم' / NON_HARFI
+'abdulhalîm' / NON_HARFI	>	'عَبْدُالْحَلِيم'
+'Abdulhalîm'	<	'عَبْدُالْحَلِيم' / NON_HARFI
+'abdusshakûr' / NON_HARFI	>	'عَبْدُالشَّكُور'
+'Abdusshakûr'	<	'عَبْدُالشَّكُور' / NON_HARFI
+'abdulghafûr' / NON_HARFI	>	'عَبْدُالْغَفُور'
+'Abdulghafûr'	<	'عَبْدُالْغَفُور' / NON_HARFI
+'abdulmuqît' / NON_HARFI	>	'عَبْدُالمُقِيت'
+'Abdulmuqît'	<	'عَبْدُالمُقِيت' / NON_HARFI
+'abdulhafîz' / NON_HARFI	>	'عَبْدُالْحَفِيظ'
+'Abdulhafîz'	<	'عَبْدُالْحَفِيظ' / NON_HARFI
+'abduljalîl' / NON_HARFI	>	'عَبْدُالْجَلِيل'
+'Abduljalîl'	<	'عَبْدُالْجَلِيل' / NON_HARFI
+'abdulhasîb' / NON_HARFI	>	'عَبْدُالْحَسِيب'
+'Abdulhasîb'	<	'عَبْدُالْحَسِيب' / NON_HARFI
+'abdurraqîb' / NON_HARFI	>	'عَبْدُالرَّقِيب'
+'Abdurraqîb'	<	'عَبْدُالرَّقِيب' / NON_HARFI
+'abdulkarîm' / NON_HARFI	>	'عَبْدُالْكَرِيم'
+'Abdulkarîm'	<	'عَبْدُالْكَرِيم' / NON_HARFI
+'abdulwâsiʼ' / NON_HARFI	>	'عَبْدُالْوَاسِع'
+'Abdulwâsiʼ'	<	'عَبْدُالْوَاسِع' / NON_HARFI
+'abdulmujîb' / NON_HARFI	>	'عَبْدُالْمُجِيب'
+'Abdulmujîb'	<	'عَبْدُالْمُجِيب' / NON_HARFI
+'abdulwadûd' / NON_HARFI	>	'عَبْدُالْوَدُود'
+'Abdulwadûd'	<	'عَبْدُالْوَدُود' / NON_HARFI
+'abdulhakîm' / NON_HARFI	>	'عَبْدُالْحَكِيم'
+'Abdulhakîm'	<	'عَبْدُالْحَكِيم' / NON_HARFI
+'abdulbâiṫ' / NON_HARFI	>	'عَبْدُالْبَاعِث'
+'Abdulbâiṫ'	<	'عَبْدُالْبَاعِث' / NON_HARFI
+'abdulmajîd' / NON_HARFI	>	'عَبْدُالْمَجِيد'
+'Abdulmajîd'	<	'عَبْدُالْمَجِيد' / NON_HARFI
+'abdulhaq' / NON_HARFI	>	'عَبْدُالْحَق'
+'Abdulhaq'	<	'عَبْدُالْحَق' / NON_HARFI
+'abdusshahîd' / NON_HARFI	>	'عَبْدُالشَّهِيد'
+'Abdusshahîd'	<	'عَبْدُالشَّهِيد' / NON_HARFI
+'abdulqawi' / NON_HARFI	>	'عَبْدُالْقَوِي'
+'Abdulqawi'	<	'عَبْدُالْقَوِي' / NON_HARFI
+'abdulwakîl' / NON_HARFI	>	'عَبْدُالْوَكِيل'
+'Abdulwakîl'	<	'عَبْدُالْوَكِيل' / NON_HARFI
+'abdulwali' / NON_HARFI	>	'عَبْدُالْوَلِي'
+'Abdulwali'	<	'عَبْدُالْوَلِي' / NON_HARFI
+'abdulmatîn' / NON_HARFI	>	'عَبْدُالْمَتِين'
+'Abdulmatîn'	<	'عَبْدُالْمَتِين' / NON_HARFI
+'abdulhamîd' / NON_HARFI	>	'عَبْدُالْحَمِيد'
+'Abdulhamîd'	<	'عَبْدُالْحَمِيد' / NON_HARFI
+'abdulmubdiʼ' / NON_HARFI	>	'عَبْدُالْمُبْدِئ'
+'Abdulmubdiʼ'	<	'عَبْدُالْمُبْدِئ' / NON_HARFI
+'abdulqayyûm' / NON_HARFI	>	'عَبْدُالْقَيُّوم'
+'Abdulqayyûm'	<	'عَبْدُالْقَيُّوم' / NON_HARFI
+'abdulhay' / NON_HARFI	>	'عَبْدُالْحَي'
+'Abdulhay'	<	'عَبْدُالْحَي' / NON_HARFI
+'abdul ahad' / NON_HARFI	>	'عَبْدُالْأَحَد'
+'Abdul ahad'	<	'عَبْدُالْأَحَد' / NON_HARFI
+'abdulwâhid' / NON_HARFI	>	'عَبْدُالْوَاحِد'
+'Abdulwâhid'	<	'عَبْدُالْوَاحِد' / NON_HARFI
+'abdulqâdir' / NON_HARFI	>	'عَبْدُالْقَادِر'
+'Abdulqâdir'	<	'عَبْدُالْقَادِر' / NON_HARFI
+'abdussamad' / NON_HARFI	>	'عَبْدُالصَّمَد'
+'Abdussamad'	<	'عَبْدُالصَّمَد' / NON_HARFI
+'abdurraûf' / NON_HARFI	>	'عَبْدُالرَّءُوف'
+'Abdurraûf'	<	'عَبْدُالرَّءُوف' / NON_HARFI
+'abduttawâb' / NON_HARFI	>	'عَبْدُالتَّوَّاب'
+'Abduttawâb'	<	'عَبْدُالتَّوَّاب' / NON_HARFI
+'abdulhâdi' / NON_HARFI	>	'عَبْدُالْهَادِي'
+'Abdulhâdi'	<	'عَبْدُالْهَادِي' / NON_HARFI
+'abdulghani' / NON_HARFI	>	'عَبْدُالْغَنِي'
+'Abdulghani'	<	'عَبْدُالْغَنِي' / NON_HARFI
+'abdulbâqi' / NON_HARFI	>	'عَبْدُالْبَاقِي'
+'Abdulbâqi'	<	'عَبْدُالْبَاقِي' / NON_HARFI
+'abdussabûr' / NON_HARFI	>	'عَبْدُالصَّبُور'
+'Abdussabûr'	<	'عَبْدُالصَّبُور' / NON_HARFI
+'abdurrashîd' / NON_HARFI	>	'عَبْدُالرَّشِيد'
+'Abdurrashîd'	<	'عَبْدُالرَّشِيد' / NON_HARFI
+
+; Place names and language names - case sensitive
+'harari' / NON_HARFI	>	'هَرَرِ'
+'Harari'	<	'هَرَرِ' / NON_HARFI
+'harar' / NON_HARFI	>	'هَرَرْ'
+'Harar'	<	'هَرَرْ' / NON_HARFI
+'arabi' / NON_HARFI	>	'عَرَبِ'
+'Arabi'	<	'عَرَبِ' / NON_HARFI
+
+; Other exceptions
+'awra' / NON_HARFI  <>	'عَوْرَة' / NON_HARFI
+
+; salât <> ṡalât, where t = ة
+'salâtênta' / NON_HARFI	<>	'صَلَاتٛىنْتَ' / NON_HARFI
+'salâte' / NON_HARFI	<>	'صَلَاتٛ' / NON_HARFI
+'salâtzinânta' / NON_HARFI	<>	'صَلَاتْزِنَانْتَ' / NON_HARFI
+'salâtzina' / NON_HARFI	<>	'صَلَاتْزِنَ' / NON_HARFI
+'salâtzignânta' / NON_HARFI	<>	'صَلَتْزِڹَانْتَ' / NON_HARFI
+'salâtzigna' / NON_HARFI	<>	'صَلَاتْزِڹَ' / NON_HARFI
+'salâtkhânta' / NON_HARFI	<>	'صَلَاتْخَانْتَ' / NON_HARFI
+'salâtkhâd' / NON_HARFI	<>	'صَلَاتْخَادْ' / NON_HARFI
+'salâtkhashinta' / NON_HARFI	<>	'صَلَاتْخَشِنْتَ' / NON_HARFI
+'salâtkhash' / NON_HARFI	<>	'صَلَاتْخَشْ' / NON_HARFI
+'salâtkha' / NON_HARFI	<>	'صَلَاتْخَ' / NON_HARFI
+'salâtkhônta' / NON_HARFI	<>	'صَلَاتْخٚونْتَ' / NON_HARFI
+'salâtkho' / NON_HARFI	<>	'صَلَاتْخٚ' / NON_HARFI
+'salâtzônta' / NON_HARFI	<>	'صَلَاتْزٚونْتَ' / NON_HARFI
+'salâtzo' / NON_HARFI	<>	'صَلَاتْزٚ' / NON_HARFI
+'salâtzênta' / NON_HARFI	<>	'صَلَاتْزٛىنْتَ' / NON_HARFI
+'salâtze' / NON_HARFI	<>	'صَلَاتْزٛ' / NON_HARFI
+'salâtziyûnta' / NON_HARFI	<>	'صَلَاتْزِيُونْتَ' / NON_HARFI
+'salâtziyu' / NON_HARFI	<>	'صَلَاتْزِيُ' / NON_HARFI
+'salât' / NON_HARFI	<>	'صَلَاةْ' / NON_HARFI
+
+; zakât <> zakât, where t = ة
+'zakâtênta'	<>	'زَكَاتٛىنْتَ'
+'zakâte'	<>	'زَكَاتٛ'
+'zakâtzinânta'	<>	'زَكَاتْزِنَانْتَ'
+'zakâtzina'	<>	'زَكَاتْزِنَ'
+'zakâtzignânta'	<>	'زَكَاتْزِڹَانْتَ'
+'zakâtzigna'	<>	'زَكَاتْزِڹَ'
+'zakâtkhânta'	<>	'زَكَاتْخَانْتَ'
+'zakâtkhâd'	<>	'زَكَاتْخَادْ'
+'zakâtkhashinta'	<>	'زَكَاتْخَشِنْتَ'
+'zakâtkhash'	<>	'زَكَاتْخَشْ'
+'zakâtkha'	<>	'زَكَاتْخَ'
+'zakâtkhônta'	<>	'زَكَاتْخٚونْتَ'
+'zakâtkho'	<>	'زَكَاتْخٚ'
+'zakâtzônta'	<>	'زَكَاتْزٚونْتَ'
+'zakâtzo'	<>	'زَكَاتْزٚ'
+'zakâtzênta'	<>	'زَكَاتْزٛىنْتَ'
+'zakâtze'	<>	'زَكَاتْزٛ'
+'zakâtziyûnta'	<>	'زَكَاتْزِيُونْتَ'
+'zakâtziyu'	<>	'زَكَاتْزِيُ'
+'zakât'	<>	'زَكَاةْ'
+
+; azân <> adhân
+'azânênta'	<>	'أَذَانٛىنْتَ'
+'azâne'	<>	'أَذَانٛ'
+'azânzinânta'	<>	'أَذَانْزِنَانْتَ'
+'azânzina'	<>	'أَذَانْزِنَ'
+'azânzignânta'	<>	'أَذَانْزِڹَانْتَ'
+'azânzigna'	<>	'أَذَانْزِڹَ'
+'azânkhânta'	<>	'أَذَانْخَانْتَ'
+'azânkhâd'	<>	'أَذَانْخَادْ'
+'azânkhashinta'	<>	'أَذَانْخَشِنْتَ'
+'azânkhash'	<>	'أَذَانْخَشْ'
+'azânkha'	<>	'أَذَانْخَ'
+'azânkhônta'	<>	'أَذَانْخٚونْتَ'
+'azânkho'	<>	'أَذَانْخٚ'
+'azânzônta'	<>	'أَذَانْزٚونْتَ'
+'azânzo'	<>	'أَذَانْزٚ'
+'azânzênta'	<>	'أَذَانْزٛىنْتَ'
+'azânze'	<>	'أَذَانْزٛ'
+'azânziyûnta'	<>	'أَذَانْزِيُونْتَ'
+'azânziyu'	<>	'أَذَانْزِيُ'
+'azân'	<>	'أَذَانْ'
+
+; sawâb <> ṫawâb
+'sawâbênta'	<>	'ثَوَابٛىنْتَ'
+'sawâbe'	<>	'ثَوَابٛ'
+'sawâbzinânta'	<>	'ثَوَابْزِنَانْتَ'
+'sawâbzina'	<>	'ثَوَابْزِنَ'
+'sawâbzignânta'	<>	'ثَوَابْزِڹَانْتَ'
+'sawâbzigna'	<>	'ثَوَابْزِڹَ'
+'sawâbkhânta'	<>	'ثَوَابْخَانْتَ'
+'sawâbkhâd'	<>	'ثَوَابْخَادْ'
+'sawâbkhashinta'	<>	'ثَوَابْخَشِنْتَ'
+'sawâbkhash'	<>	'ثَوَابْخَشْ'
+'sawâbkha'	<>	'ثَوَابْخَ'
+'sawâbkhônta'	<>	'ثَوَابْخٚونْتَ'
+'sawâbkho'	<>	'ثَوَابْخٚ'
+'sawâbzônta'	<>	'ثَوَابْزٚونْتَ'
+'sawâbzo'	<>	'ثَوَابْزٚ'
+'sawâbzênta'	<>	'ثَوَابْزٛىنْتَ'
+'sawâbze'	<>	'ثَوَابْزٛ'
+'sawâbziyûnta'	<>	'ثَوَابْزِيُونْتَ'
+'sawâbziyu'	<>	'ثَوَابْزِيُ'
+'sawâb'	<>	'ثَوَابْ'
+
+
+; jamâa <>jamâȧ 
+'jamâaênta'	<>	'جَمَاعٛىنْتَ'
+'jamâae'	<>	'جَمَاعٛ'
+'jamâazinânta'	<>	'جَمَاعَزِنَانْتَ'
+'jamâazina'	<>	'جَمَاعَزِنَ'
+'jamâazignânta'	<>	'جَمَاعَزِڹَانْتَ'
+'jamâazigna'	<>	'جَمَاعَزِڹَ'
+'jamâakhânta'	<>	'جَمَاعَخَانْتَ'
+'jamâakhâd'	<>	'جَمَاعَخَادْ'
+'jamâakhashinta'	<>	'جَمَاعَخَشِنْتَ'
+'jamâakhash'	<>	'جَمَاعَخَشْ'
+'jamâakha'	<>	'جَمَاعَخَ'
+'jamâakhônta'	<>	'جَمَاعَخٚونْتَ'
+'jamâakho'	<>	'جَمَاعَخٚ'
+'jamâazônta'	<>	'جَمَاعَزٚونْتَ'
+'jamâazo'	<>	'جَمَاعَزٚ'
+'jamâazênta'	<>	'جَمَاعَزٛىنْتَ'
+'jamâaze'	<>	'جَمَاعَزٛ'
+'jamâaziyûnta'	<>	'جَمَاعَزِيُونْتَ'
+'jamâaziyu'	<>	'جَمَاعَزِيُ'
+; jamâa <>jamâȧaḣ
+'jamâa'	<>	'جَمَاعَه'
+
+; misra <> miṡra
+'misraênta'	<>	'مِصْرَإٛىنْتَ'
+'misrae'	<>	'مِصْرَإٛ'
+'misrazinânta'	<>	'مِصْرَزِنَانْتَ'
+'misrazina'	<>	'مِصْرَزِنَ'
+'misrazignânta'	<>	'مِصْرَزِڹَانْتَ'
+'misrazigna'	<>	'مِصْرَزِڹَ'
+'misrakhânta'	<>	'مِصْرَخَادْ'
+'misrakhâd'	<>	'مِصْرَخَادْ'
+'misrakhashinta'	<>	'مِصْرَخَشِنْتَ'
+'misrakhash'	<>	'مِصْرَخَشْ'
+'misrakha'	<>	'مِصْرَخَ'
+'misrakhônta'	<>	'مِصْرَخٚونْتَ'
+'misrakho'	<>	'مِصْرَخٚ'
+'misrazônta'	<>	'مِصْرَزٚونْتَ'
+'misrazo'	<>	'مِصْرَزٚ'
+'misrazênta'	<>	'مِصْرَزٛ'
+'misraze'	<>	'مِصْرَزٛ'
+'misraziyûnta'	<>	'مِصْرَزِيُونْتَ'
+'misraziyu'	<>	'مِصْرَزِيُ'
+'misra'	<>	'مِصْرَ'
+
+; xâhir <> xâḣir
+'xâhirênta'	<>	'طَاهِرٛىنْتَ'
+'xâhire'	<>	'طَاهِرٛ'
+'xâhirzinânta'	<>	'طَاهِرْزِنَانْتَ'
+'xâhirzina'	<>	'طَاهِرْزِنَ'
+'xâhirzignânta'	<>	'طَاهِرْزِڹَانْتَ'
+'xâhirzigna'	<>	'طَاهِرْزِڹَ'
+'xâhirkhânta'	<>	'طَاهِرْخَانْتَ'
+'xâhirkhâd'	<>	'طَاهِرْخَادْ'
+'xâhirkhashinta'	<>	'طَاهِرْخَشِنْتَ'
+'xâhirkhash'	<>	'طَاهِرْخَشْ'
+'xâhirkha'	<>	'طَاهِرْخَ'
+'xâhirkhônta'	<>	'طَاهِرْخٚونْتَ'
+'xâhirkho'	<>	'طَاهِرْخٚ'
+'xâhirzônta'	<>	'طَاهِرْزٚونْتَ'
+'xâhirzo'	<>	'طَاهِرْزٚ'
+'xâhirzênta'	<>	'طَاهِرْزٛىنْتَ'
+'xâhirze'	<>	'طَاهِرْزٛ'
+'xâhirziyûnta'	<>	'طَاهِرْزِيُونْتَ'
+'xâhirziyu'	<>	'طَاهِرْزِيُ'
+'xâhir'	<>	'طَاهِرْ'
+
+; rukûʼ <> rukûȧ
+'rukûʼênta'	<>	'رُكُوعٛىنْتَ'
+'rukûʼe'	<>	'رُكُوعٛ'
+'rukûʼzinânta'	<>	'رُكُوعزِنَانْتَ'
+'rukûʼzina'	<>	'رُكُوعزِنَ'
+'rukûʼzignânta'	<>	'رُكُوعزِڹَانْتَ'
+'rukûʼzigna'	<>	'رُكُوعزِڹَ'
+'rukûʼkhânta'	<>	'رُكُوعخَانْتَ'
+'rukûʼkhâd'	<>	'رُكُوعخَادْ'
+'rukûʼkhashinta'	<>	'رُكُوعخَشِنْتَ'
+'rukûʼkhash'	<>	'رُكُوعخَشْ'
+'rukûʼkha'	<>	'رُكُوعخَ'
+'rukûʼkhônta'	<>	'رُكُوعخٚونْتَ'
+'rukûʼkho'	<>	'رُكُوعخٚ'
+'rukûʼzônta'	<>	'رُكُوعزٚونْتَ'
+'rukûʼzo'	<>	'رُكُوعزٚ'
+'rukûʼzênta'	<>	'رُكُوعزٛىنْتَ'
+'rukûʼze'	<>	'رُكُوعزٛ'
+'rukûʼziyûnta'	<>	'رُكُوعزِيُونْتَ'
+'rukûʼziyu'	<>	'رُكُوعزِيُ'
+'rukûʼ'	<>	'رُكُوعْ'
+
+; rakaa <> rakaȧ
+'rakaaênta'	<>	'رَكَعٛىنْتَ'
+'rakaae'	<>	'رَكَعٛ'
+'rakaazinânta'	<>	'رَكَعَزِنَانْتَ'
+'rakaazina'	<>	'رَكَعَزِنَ'
+'rakaazignânta'	<>	'رَكَعَزِڹَانْتَ'
+'rakaazigna'	<>	'رَكَعَزِڹَ'
+'rakaakhânta'	<>	'رَكَعَخَانْتَ'
+'rakaakhâd'	<>	'رَكَعَخَادْ'
+'rakaakhashinta'	<>	'رَكَعَخَشِنْتَ'
+'rakaakhash'	<>	'رَكَعَخَشْ'
+'rakaakha'	<>	'رَكَعَخَ'
+'rakaakhônta'	<>	'رَكَعَخٚونْتَ'
+'rakaakho'	<>	'رَكَعَخٚ'
+'rakaazônta'	<>	'رَكَعَزٚونْتَ'
+'rakaazo'	<>	'رَكَعَزٚ'
+'rakaazênta'	<>	'رَكَعَزٛىنْتَ'
+'rakaaze'	<>	'رَكَعَزٛ'
+'rakaaziyûnta'	<>	'رَكَعَزِيُونْتَ'
+'rakaaziyu'	<>	'رَكَعَزِيُ'
+; rakaa <> rakaȧaḣ
+'rakaa'	<>	'رَكَعَه'
+
+; haydi <> hayḋi
+'haydiênta'	<>	'حَيْضِإٛىنْتَ'
+'haydie'	<>	'حَيْضِإٛ'
+'haydizinânta'	<>	'حَيْضِزِنَانْتَ'
+'haydizina'	<>	'حَيْضِزِنَ'
+'haydizignânta'	<>	'حَيْضِزِڹَاتَ'
+'haydizigna'	<>	'حَيْضِزِڹَ'
+'haydikhânta'	<>	'حَيْضِخَانْتَ'
+'haydikhâd'	<>	'حَيْضِخَادْ'
+'haydikhashinta'	<>	'حَيْضِخَشِنْتَ'
+'haydikhash'	<>	'حَيْضِخَشْ'
+'haydikha'	<>	'حَيْضِخَ'
+'haydikhônta'	<>	'حَيْضِخٚونْتَ'
+'haydikho'	<>	'حَيْضِخٚ'
+'haydizônta'	<>	'حَيْضِزٚونْتَ'
+'haydizo'	<>	'حَيْضِزٚ'
+'haydizênta'	<>	'حَيْضِزٛىنْتَ'
+'haydize'	<>	'حَيْضِزٛ'
+'haydiziyûnta'	<>	'حَيْضِزِيُونْتَ'
+'haydiziyu'	<>	'حَيْضِزِيُ'
+'haydi'	<>	'حَيْضِ'
+
+; fardi <> farḋi
+'fardiênta'	<>	'فَرْضِإٛىنْتَ'
+'fardie'	<>	'فَرْضِإٛ'
+'fardizinânta'	<>	'فَرْضِزِنَانْتَ'
+'fardizina'	<>	'فَرْضِزِنَ'
+'fardizignânta'	<>	'فَرْضِزِڹَانْتَ'
+'fardizigna'	<>	'فَرْضِزِڹَ'
+'fardikhânta'	<>	'فَرْضِخعنْتَ'
+'fardikhâd'	<>	'فَرْضِخَادْ'
+'fardikhashinta'	<>	'فَرْضِخَشِنْتَ'
+'fardikhash'	<>	'فَرْضِخَشْ'
+'fardikha'	<>	'فَرْضِخَ'
+'fardikhônta'	<>	'فَرْضِخٚونْتَ'
+'fardikho'	<>	'فَرْضِخٚ'
+'fardizônta'	<>	'فَرْضِزٚونْتَ'
+'fardizo'	<>	'فَرْضِزٚ'
+'fardizênta'	<>	'فَرْضِزٛىنْتَ'
+'fardize'	<>	'فَرْضِزٛ'
+'fardiziyûnta'	<>	'فَرْضِزِيُونْتَ'
+'fardiziyu'	<>	'فَرْضِزِيُ'
+'fardi'	<>	'فَرْضِ'
+
+; îd <> ȧîd
+'îdênta'	<>	'عِىدٛىنْتَ'
+'îde'	<>	'عِىدٛ'
+'îdzinânta'	<>	'عِىدْزِنَانْتَ'
+'îdzina'	<>	'عِىدْزِنَ'
+'îdzignânta'	<>	'عِىدْزِڹَانْتَ'
+'îdzigna'	<>	'عِىدْزِڹَ'
+'îdkhânta'	<>	'عِىدْخَانْتَ'
+'îdkhâd'	<>	'عِىدْخَادْ'
+'îdkhashinta'	<>	'عِىدْخَشِنْتَ'
+'îdkhash'	<>	'عِىدْخَشْ'
+'îdkha'	<>	'عِىدْخَ'
+'îdkhônta'	<>	'عِىدْخٚونْتَ'
+'îdkho'	<>	'عِىدْخٚ'
+'îdzônta'	<>	'عِىدْزٚونْتَ'
+'îdzo'	<>	'عِىدْزٚ'
+'îdzênta'	<>	'عِىدْزٛىنْتَ'
+'îdze'	<>	'عِىدْزٛ'
+'îdziyûnta'	<>	'عِىدْزِيُونْتَ'
+'îdziyu'	<>	'عِىدْزِيُ'
+'îd'	<>	'عِىدْ'
+
+; Alla <> allâḣ
+; TODO: should it be line Name exception and rever to ccpital form?
+'alla'	>	'أَلَّله'
+'Alla'	<	'أَلَّله'
+
+; juma <> jumȧaḣ
+'juma'	<>	'جُمعَهْ'
+
+; khuxba <> khuxbaḣ
+'khuxba'	<>	'خُطْبَهْ'
+                 	
+
+pass(Unicode)
+; Orthographic conversion
+
+; Assume no independant vowel after shadda, i.e. tʼa but not ttʼa
+
+U+0063 U+0063 U+0068 U+00e2 U+02bc	<>	U+069b U+0651 U+064e U+0627 U+0621 U+0652
+U+0063 U+0063 U+0068 U+00e2	<>	U+069b U+0651 U+064e U+0627
+U+0063 U+0063 U+0068 U+00ea U+02bc	<>	U+069b U+0651 U+065b U+0649 U+0621 U+0652
+U+0063 U+0063 U+0068 U+00ea	<>	U+069b U+0651 U+065b U+0649
+U+0063 U+0063 U+0068 U+00ee U+02bc	<>	U+069b U+0651 U+0650 U+0649 U+0621 U+0652
+U+0063 U+0063 U+0068 U+00ee	<>	U+069b U+0651 U+0650 U+0649
+U+0063 U+0063 U+0068 U+00f4 U+02bc	<>	U+069b U+0651 U+065a U+0648 U+0621 U+0652
+U+0063 U+0063 U+0068 U+00f4	<>	U+069b U+0651 U+065a U+0648
+U+0063 U+0063 U+0068 U+00fb U+02bc	<>	U+069b U+0651 U+064f U+0648 U+0621 U+0652
+U+0063 U+0063 U+0068 U+00fb	<>	U+069b U+0651 U+064f U+0648
+U+0063 U+0063 U+0068 U+0061 U+02bc	<>	U+069b U+0651 U+064e U+0623 U+0652
+U+0063 U+0063 U+0068 U+0061	<>	U+069b U+0651 U+064e
+U+0063 U+0063 U+0068 U+0065 U+02bc	<>	U+069b U+0651 U+065b U+0649 U+0654 U+0652
+U+0063 U+0063 U+0068 U+0065	<>	U+069b U+0651 U+065b
+U+0063 U+0063 U+0068 U+0069 U+02bc	<>	U+069b U+0651 U+0650 U+0649 U+0654 U+0652
+U+0063 U+0063 U+0068 U+0069	<>	U+069b U+0651 U+0650
+U+0063 U+0063 U+0068 U+006f U+02bc	<>	U+069b U+0651 U+065a U+0624 U+0652
+U+0063 U+0063 U+0068 U+006f	<>	U+069b U+0651 U+065a
+U+0063 U+0063 U+0068 U+0075 U+02bc	<>	U+069b U+0651 U+064f U+0624 U+0652
+U+0063 U+0063 U+0068 U+0075	<>	U+069b U+0651 U+064f
+U+0063 U+0063 U+0068	<>	U+069b U+0651
+
+U+0064 U+0064 U+0068 U+00e2 U+02bc	<>	U+0630 U+0651 U+064e U+0627 U+0621 U+0652
+U+0064 U+0064 U+0068 U+00e2	<>	U+0630 U+0651 U+064e U+0627
+U+0064 U+0064 U+0068 U+00ea U+02bc	<>	U+0630 U+0651 U+065b U+0649 U+0621 U+0652
+U+0064 U+0064 U+0068 U+00ea	<>	U+0630 U+0651 U+065b U+0649
+U+0064 U+0064 U+0068 U+00ee U+02bc	<>	U+0630 U+0651 U+0650 U+0649 U+0621 U+0652
+U+0064 U+0064 U+0068 U+00ee	<>	U+0630 U+0651 U+0650 U+0649
+U+0064 U+0064 U+0068 U+00f4 U+02bc	<>	U+0630 U+0651 U+065a U+0648 U+0621 U+0652
+U+0064 U+0064 U+0068 U+00f4	<>	U+0630 U+0651 U+065a U+0648
+U+0064 U+0064 U+0068 U+00fb U+02bc	<>	U+0630 U+0651 U+064f U+0648 U+0621 U+0652
+U+0064 U+0064 U+0068 U+00fb	<>	U+0630 U+0651 U+064f U+0648
+U+0064 U+0064 U+0068 U+0061 U+02bc	<>	U+0630 U+0651 U+064e U+0623 U+0652
+U+0064 U+0064 U+0068 U+0061	<>	U+0630 U+0651 U+064e
+U+0064 U+0064 U+0068 U+0065 U+02bc	<>	U+0630 U+0651 U+065b U+0649 U+0654 U+0652
+U+0064 U+0064 U+0068 U+0065	<>	U+0630 U+0651 U+065b
+U+0064 U+0064 U+0068 U+0069 U+02bc	<>	U+0630 U+0651 U+0650 U+0649 U+0654 U+0652
+U+0064 U+0064 U+0068 U+0069	<>	U+0630 U+0651 U+0650
+U+0064 U+0064 U+0068 U+006f U+02bc	<>	U+0630 U+0651 U+065a U+0624 U+0652
+U+0064 U+0064 U+0068 U+006f	<>	U+0630 U+0651 U+065a
+U+0064 U+0064 U+0068 U+0075 U+02bc	<>	U+0630 U+0651 U+064f U+0624 U+0652
+U+0064 U+0064 U+0068 U+0075	<>	U+0630 U+0651 U+064f
+U+0064 U+0064 U+0068	<>	U+0630 U+0651
+
+U+0067 U+0067 U+0068 U+00e2 U+02bc	<>	U+063a U+0651 U+064e U+0627 U+0621 U+0652
+U+0067 U+0067 U+0068 U+00e2	<>	U+063a U+0651 U+064e U+0627
+U+0067 U+0067 U+0068 U+00ea U+02bc	<>	U+063a U+0651 U+065b U+0649 U+0621 U+0652
+U+0067 U+0067 U+0068 U+00ea	<>	U+063a U+0651 U+065b U+0649
+U+0067 U+0067 U+0068 U+00ee U+02bc	<>	U+063a U+0651 U+0650 U+0649 U+0621 U+0652
+U+0067 U+0067 U+0068 U+00ee	<>	U+063a U+0651 U+0650 U+0649
+U+0067 U+0067 U+0068 U+00f4 U+02bc	<>	U+063a U+0651 U+065a U+0648 U+0621 U+0652
+U+0067 U+0067 U+0068 U+00f4	<>	U+063a U+0651 U+065a U+0648
+U+0067 U+0067 U+0068 U+00fb U+02bc	<>	U+063a U+0651 U+064f U+0648 U+0621 U+0652
+U+0067 U+0067 U+0068 U+00fb	<>	U+063a U+0651 U+064f U+0648
+U+0067 U+0067 U+0068 U+0061 U+02bc	<>	U+063a U+0651 U+064e U+0623 U+0652
+U+0067 U+0067 U+0068 U+0061	<>	U+063a U+0651 U+064e
+U+0067 U+0067 U+0068 U+0065 U+02bc	<>	U+063a U+0651 U+065b U+0649 U+0654 U+0652
+U+0067 U+0067 U+0068 U+0065	<>	U+063a U+0651 U+065b
+U+0067 U+0067 U+0068 U+0069 U+02bc	<>	U+063a U+0651 U+0650 U+0649 U+0654 U+0652
+U+0067 U+0067 U+0068 U+0069	<>	U+063a U+0651 U+0650
+U+0067 U+0067 U+0068 U+006f U+02bc	<>	U+063a U+0651 U+065a U+0624 U+0652
+U+0067 U+0067 U+0068 U+006f	<>	U+063a U+0651 U+065a
+U+0067 U+0067 U+0068 U+0075 U+02bc	<>	U+063a U+0651 U+064f U+0624 U+0652
+U+0067 U+0067 U+0068 U+0075	<>	U+063a U+0651 U+064f
+U+0067 U+0067 U+0068	<>	U+063a U+0651
+
+
+
+U+0067 U+0067 U+006e U+00e2 U+02bc	<>	U+06b9 U+0651 U+064e U+0627 U+0621 U+0652
+U+0067 U+0067 U+006e U+00e2	<>	U+06b9 U+0651 U+064e U+0627
+U+0067 U+0067 U+006e U+00ea U+02bc	<>	U+06b9 U+0651 U+065b U+0649 U+0621 U+0652
+U+0067 U+0067 U+006e U+00ea	<>	U+06b9 U+0651 U+065b U+0649
+U+0067 U+0067 U+006e U+00ee U+02bc	<>	U+06b9 U+0651 U+0650 U+0649 U+0621 U+0652
+U+0067 U+0067 U+006e U+00ee	<>	U+06b9 U+0651 U+0650 U+0649
+U+0067 U+0067 U+006e U+00f4 U+02bc	<>	U+06b9 U+0651 U+065a U+0648 U+0621 U+0652
+U+0067 U+0067 U+006e U+00f4	<>	U+06b9 U+0651 U+065a U+0648
+U+0067 U+0067 U+006e U+00fb U+02bc	<>	U+06b9 U+0651 U+064f U+0648 U+0621 U+0652
+U+0067 U+0067 U+006e U+00fb	<>	U+06b9 U+0651 U+064f U+0648
+U+0067 U+0067 U+006e U+0061 U+02bc	<>	U+06b9 U+0651 U+064e U+0623 U+0652
+U+0067 U+0067 U+006e U+0061	<>	U+06b9 U+0651 U+064e
+U+0067 U+0067 U+006e U+0065 U+02bc	<>	U+06b9 U+0651 U+065b U+0649 U+0654 U+0652
+U+0067 U+0067 U+006e U+0065	<>	U+06b9 U+0651 U+065b
+U+0067 U+0067 U+006e U+0069 U+02bc	<>	U+06b9 U+0651 U+0650 U+0649 U+0654 U+0652
+U+0067 U+0067 U+006e U+0069	<>	U+06b9 U+0651 U+0650
+U+0067 U+0067 U+006e U+006f U+02bc	<>	U+06b9 U+0651 U+065a U+0624 U+0652
+U+0067 U+0067 U+006e U+006f	<>	U+06b9 U+0651 U+065a
+U+0067 U+0067 U+006e U+0075 U+02bc	<>	U+06b9 U+0651 U+064f U+0624 U+0652
+U+0067 U+0067 U+006e U+0075	<>	U+06b9 U+0651 U+064f
+U+0067 U+0067 U+006e	<>	U+06b9 U+0651
+
+U+006b U+006b U+0068 U+00e2 U+02bc	<>	U+062e U+0651 U+064e U+0627 U+0621 U+0652
+U+006b U+006b U+0068 U+00e2	<>	U+062e U+0651 U+064e U+0627
+U+006b U+006b U+0068 U+00ea U+02bc	<>	U+062e U+0651 U+065b U+0649 U+0621 U+0652
+U+006b U+006b U+0068 U+00ea	<>	U+062e U+0651 U+065b U+0649
+U+006b U+006b U+0068 U+00ee U+02bc	<>	U+062e U+0651 U+0650 U+0649 U+0621 U+0652
+U+006b U+006b U+0068 U+00ee	<>	U+062e U+0651 U+0650 U+0649
+U+006b U+006b U+0068 U+00f4 U+02bc	<>	U+062e U+0651 U+065a U+0648 U+0621 U+0652
+U+006b U+006b U+0068 U+00f4	<>	U+062e U+0651 U+065a U+0648
+U+006b U+006b U+0068 U+00fb U+02bc	<>	U+062e U+0651 U+064f U+0648 U+0621 U+0652
+U+006b U+006b U+0068 U+00fb	<>	U+062e U+0651 U+064f U+0648
+U+006b U+006b U+0068 U+0061 U+02bc	<>	U+062e U+0651 U+064e U+0623 U+0652
+U+006b U+006b U+0068 U+0061	<>	U+062e U+0651 U+064e
+U+006b U+006b U+0068 U+0065 U+02bc	<>	U+062e U+0651 U+065b U+0649 U+0654 U+0652
+U+006b U+006b U+0068 U+0065	<>	U+062e U+0651 U+065b
+U+006b U+006b U+0068 U+0069 U+02bc	<>	U+062e U+0651 U+0650 U+0649 U+0654 U+0652
+U+006b U+006b U+0068 U+0069	<>	U+062e U+0651 U+0650
+U+006b U+006b U+0068 U+006f U+02bc	<>	U+062e U+0651 U+065a U+0624 U+0652
+U+006b U+006b U+0068 U+006f	<>	U+062e U+0651 U+065a
+U+006b U+006b U+0068 U+0075 U+02bc	<>	U+062e U+0651 U+064f U+0624 U+0652
+U+006b U+006b U+0068 U+0075	<>	U+062e U+0651 U+064f
+U+006b U+006b U+0068	<>	U+062e U+0651
+
+U+0073 U+0073 U+0068 U+00e2 U+02bc	<>	U+0634 U+0651 U+064e U+0627 U+0621 U+0652
+U+0073 U+0073 U+0068 U+00e2	<>	U+0634 U+0651 U+064e U+0627
+U+0073 U+0073 U+0068 U+00ea U+02bc	<>	U+0634 U+0651 U+065b U+0649 U+0621 U+0652
+U+0073 U+0073 U+0068 U+00ea	<>	U+0634 U+0651 U+065b U+0649
+U+0073 U+0073 U+0068 U+00ee U+02bc	<>	U+0634 U+0651 U+0650 U+0649 U+0621 U+0652
+U+0073 U+0073 U+0068 U+00ee	<>	U+0634 U+0651 U+0650 U+0649
+U+0073 U+0073 U+0068 U+00f4 U+02bc	<>	U+0634 U+0651 U+065a U+0648 U+0621 U+0652
+U+0073 U+0073 U+0068 U+00f4	<>	U+0634 U+0651 U+065a U+0648
+U+0073 U+0073 U+0068 U+00fb U+02bc	<>	U+0634 U+0651 U+064f U+0648 U+0621 U+0652
+U+0073 U+0073 U+0068 U+00fb	<>	U+0634 U+0651 U+064f U+0648
+U+0073 U+0073 U+0068 U+0061 U+02bc	<>	U+0634 U+0651 U+064e U+0623 U+0652
+U+0073 U+0073 U+0068 U+0061	<>	U+0634 U+0651 U+064e
+U+0073 U+0073 U+0068 U+0065 U+02bc	<>	U+0634 U+0651 U+065b U+0649 U+0654 U+0652
+U+0073 U+0073 U+0068 U+0065	<>	U+0634 U+0651 U+065b
+U+0073 U+0073 U+0068 U+0069 U+02bc	<>	U+0634 U+0651 U+0650 U+0649 U+0654 U+0652
+U+0073 U+0073 U+0068 U+0069	<>	U+0634 U+0651 U+0650
+U+0073 U+0073 U+0068 U+006f U+02bc	<>	U+0634 U+0651 U+065a U+0624 U+0652
+U+0073 U+0073 U+0068 U+006f	<>	U+0634 U+0651 U+065a
+U+0073 U+0073 U+0068 U+0075 U+02bc	<>	U+0634 U+0651 U+064f U+0624 U+0652
+U+0073 U+0073 U+0068 U+0075	<>	U+0634 U+0651 U+064f
+U+0073 U+0073 U+0068	<>	U+0634 U+0651
+
+
+
+U+0078 U+0078 U+0068 U+00e2 U+02bc	<>	U+06ac U+0651 U+064e U+0627 U+0621 U+0652
+U+0078 U+0078 U+0068 U+00e2	<>	U+06ac U+0651 U+064e U+0627
+U+0078 U+0078 U+0068 U+00ea U+02bc	<>	U+06ac U+0651 U+065b U+0649 U+0621 U+0652
+U+0078 U+0078 U+0068 U+00ea	<>	U+06ac U+0651 U+065b U+0649
+U+0078 U+0078 U+0068 U+00ee U+02bc	<>	U+06ac U+0651 U+0650 U+0649 U+0621 U+0652
+U+0078 U+0078 U+0068 U+00ee	<>	U+06ac U+0651 U+0650 U+0649
+U+0078 U+0078 U+0068 U+00f4 U+02bc	<>	U+06ac U+0651 U+065a U+0648 U+0621 U+0652
+U+0078 U+0078 U+0068 U+00f4	<>	U+06ac U+0651 U+065a U+0648
+U+0078 U+0078 U+0068 U+00fb U+02bc	<>	U+06ac U+0651 U+064f U+0648 U+0621 U+0652
+U+0078 U+0078 U+0068 U+00fb	<>	U+06ac U+0651 U+064f U+0648
+U+0078 U+0078 U+0068 U+0061 U+02bc	<>	U+06ac U+0651 U+064e U+0623 U+0652
+U+0078 U+0078 U+0068 U+0061	<>	U+06ac U+0651 U+064e
+U+0078 U+0078 U+0068 U+0065 U+02bc	<>	U+06ac U+0651 U+065b U+0649 U+0654 U+0652
+U+0078 U+0078 U+0068 U+0065	<>	U+06ac U+0651 U+065b
+U+0078 U+0078 U+0068 U+0069 U+02bc	<>	U+06ac U+0651 U+0650 U+0649 U+0654 U+0652
+U+0078 U+0078 U+0068 U+0069	<>	U+06ac U+0651 U+0650
+U+0078 U+0078 U+0068 U+006f U+02bc	<>	U+06ac U+0651 U+065a U+0624 U+0652
+U+0078 U+0078 U+0068 U+006f	<>	U+06ac U+0651 U+065a
+U+0078 U+0078 U+0068 U+0075 U+02bc	<>	U+06ac U+0651 U+064f U+0624 U+0652
+U+0078 U+0078 U+0068 U+0075	<>	U+06ac U+0651 U+064f
+U+0078 U+0078 U+0068	<>	U+06ac U+0651
+
+U+007a U+007a U+0068 U+00e2 U+02bc	<>	U+0698 U+0651 U+064e U+0627 U+0621 U+0652
+U+007a U+007a U+0068 U+00e2	<>	U+0698 U+0651 U+064e U+0627
+U+007a U+007a U+0068 U+00ea U+02bc	<>	U+0698 U+0651 U+065b U+0649 U+0621 U+0652
+U+007a U+007a U+0068 U+00ea	<>	U+0698 U+0651 U+065b U+0649
+U+007a U+007a U+0068 U+00ee U+02bc	<>	U+0698 U+0651 U+0650 U+0649
+U+007a U+007a U+0068 U+00ee	<>	U+0698 U+0651 U+0650 U+0649
+U+007a U+007a U+0068 U+00f4 U+02bc	<>	U+0698 U+0651 U+065a U+0648 U+0621 U+0652
+U+007a U+007a U+0068 U+00f4	<>	U+0698 U+0651 U+065a U+0648
+U+007a U+007a U+0068 U+00fb U+02bc	<>	U+0698 U+0651 U+064f U+0648 U+0621 U+0652
+U+007a U+007a U+0068 U+00fb	<>	U+0698 U+0651 U+064f U+0648
+U+007a U+007a U+0068 U+0061 U+02bc	<>	U+0698 U+0651 U+064e U+0623 U+0652
+U+007a U+007a U+0068 U+0061	<>	U+0698 U+0651 U+064e
+U+007a U+007a U+0068 U+0065 U+02bc	<>	U+0698 U+0651 U+065b U+0649 U+0654 U+0652
+U+007a U+007a U+0068 U+0065	<>	U+0698 U+0651 U+065b
+U+007a U+007a U+0068 U+0069 U+02bc	<>	U+0698 U+0651 U+0650 U+0649 U+0654 U+0652
+U+007a U+007a U+0068 U+0069	<>	U+0698 U+0651 U+0650
+U+007a U+007a U+0068 U+006f U+02bc	<>	U+0698 U+0651 U+065a U+0624 U+0652
+U+007a U+007a U+0068 U+006f	<>	U+0698 U+0651 U+065a
+U+007a U+007a U+0068 U+0075 U+02bc	<>	U+0698 U+0651 U+064f U+0624 U+0652
+U+007a U+007a U+0068 U+0075	<>	U+0698 U+0651 U+064f
+U+007a U+007a U+0068	<>	U+0698 U+0651
+
+U+0063 U+02bc U+0063 U+0068 U+00e2 U+02bc	<>	U+069f U+0652 U+069b U+064e U+0627 U+0621 U+0652
+U+0063 U+02bc U+0063 U+0068 U+00e2	<>	U+069f U+0652 U+069b U+064e U+0627
+U+0063 U+02bc U+0063 U+0068 U+00ea U+02bc	<>	U+069f U+0652 U+069b U+065b U+0649 U+0621 U+0652
+U+0063 U+02bc U+0063 U+0068 U+00ea	<>	U+069f U+0652 U+069b U+065b U+0649
+U+0063 U+02bc U+0063 U+0068 U+00ee U+02bc	<>	U+069f U+0652 U+069b U+0650 U+0649 U+0621 U+0652
+U+0063 U+02bc U+0063 U+0068 U+00ee	<>	U+069f U+0652 U+069b U+0650 U+0649
+U+0063 U+02bc U+0063 U+0068 U+00f4 U+02bc	<>	U+069f U+0652 U+069b U+065a U+0648 U+0621 U+0652
+U+0063 U+02bc U+0063 U+0068 U+00f4	<>	U+069f U+0652 U+069b U+065a U+0648
+U+0063 U+02bc U+0063 U+0068 U+00fb U+02bc	<>	U+069f U+0652 U+069b U+064f U+0648 U+0621 U+0652
+U+0063 U+02bc U+0063 U+0068 U+00fb	<>	U+069f U+0652 U+069b U+064f U+0648
+U+0063 U+02bc U+0063 U+0068 U+0061 U+02bc	<>	U+069f U+0652 U+069b U+064e U+0623 U+0652
+U+0063 U+02bc U+0063 U+0068 U+0061	<>	U+069f U+0652 U+069b U+064e
+U+0063 U+02bc U+0063 U+0068 U+0065 U+02bc	<>	U+069f U+0652 U+069b U+065b U+0649 U+0654 U+0652
+U+0063 U+02bc U+0063 U+0068 U+0065	<>	U+069f U+0652 U+069b U+065b
+U+0063 U+02bc U+0063 U+0068 U+0069 U+02bc	<>	U+069f U+0652 U+069b U+0650 U+0649 U+0654 U+0652
+U+0063 U+02bc U+0063 U+0068 U+0069	<>	U+069f U+0652 U+069b U+0650
+U+0063 U+02bc U+0063 U+0068 U+006f U+02bc	<>	U+069f U+0652 U+069b U+065a U+0624 U+0652
+U+0063 U+02bc U+0063 U+0068 U+006f	<>	U+069f U+0652 U+069b U+065a
+U+0063 U+02bc U+0063 U+0068 U+0075 U+02bc	<>	U+069f U+0652 U+069b U+064f U+0624 U+0652
+U+0063 U+02bc U+0063 U+0068 U+0075	<>	U+069f U+0652 U+069b U+064f
+U+0063 U+02bc U+0063 U+0068	<>	U+069f U+0652 U+069b
+
+U+0063 U+02bc U+0068 U+00e2 U+02bc	<>	U+069f U+0652 U+062d U+064e U+0627 U+0621 U+0652
+U+0063 U+02bc U+0068 U+00e2	<>	U+069f U+0652 U+062d U+064e U+0627
+U+0063 U+02bc U+0068 U+00ea U+02bc	<>	U+069f U+0652 U+062d U+065b U+0649 U+0621 U+0652
+U+0063 U+02bc U+0068 U+00ea	<>	U+069f U+0652 U+062d U+065b U+0649
+U+0063 U+02bc U+0068 U+00ee U+02bc	<>	U+069f U+0652 U+062d U+0650 U+0649 U+0621 U+0652
+U+0063 U+02bc U+0068 U+00ee	<>	U+069f U+0652 U+062d U+0650 U+0649
+U+0063 U+02bc U+0068 U+00f4 U+02bc	<>	U+069f U+0652 U+062d U+065a U+0648 U+0621 U+0652
+U+0063 U+02bc U+0068 U+00f4	<>	U+069f U+0652 U+062d U+065a U+0648
+U+0063 U+02bc U+0068 U+00fb U+02bc	<>	U+069f U+0652 U+062d U+064f U+0648 U+0621 U+0652
+U+0063 U+02bc U+0068 U+00fb	<>	U+069f U+0652 U+062d U+064f U+0648
+U+0063 U+02bc U+0068 U+0061 U+02bc	<>	U+069f U+0652 U+062d U+064e U+0623 U+0652
+U+0063 U+02bc U+0068 U+0061	<>	U+069f U+0652 U+062d U+064e
+U+0063 U+02bc U+0068 U+0065 U+02bc	<>	U+069f U+0652 U+062d U+065b U+0649 U+0654 U+0652
+U+0063 U+02bc U+0068 U+0065	<>	U+069f U+0652 U+062d U+065b
+U+0063 U+02bc U+0068 U+0069 U+02bc	<>	U+069f U+0652 U+062d U+0650 U+0649 U+0654 U+0652
+U+0063 U+02bc U+0068 U+0069	<>	U+069f U+0652 U+062d U+0650
+U+0063 U+02bc U+0068 U+006f U+02bc	<>	U+069f U+0652 U+062d U+065a U+0624 U+0652
+U+0063 U+02bc U+0068 U+006f	<>	U+069f U+0652 U+062d U+065a
+U+0063 U+02bc U+0068 U+0075 U+02bc	<>	U+069f U+0652 U+062d U+064f U+0624 U+0652
+U+0063 U+02bc U+0068 U+0075	<>	U+069f U+0652 U+062d U+064f
+U+0063 U+02bc U+0068	<>	U+069f U+0652 U+062d
+
+; dʼdh

@@ -1,0 +1,333 @@
+﻿c hararab.kmn
+c 
+c Harari (Arabi harfi) 2.1.1
+c 
+c Keyboard layout designed for Harari (Revised Arabic orthography).
+c 
+c © State Library of Victoria and the Australian Saay Harari Association 2009
+c 
+c This work is licensed under the Creative Commons
+c Attribution-Non-Commercial-Share Alike 2.5 Australia License.
+c To view a copy of this licence, visit
+c http://creativecommons.org/licenses/by-nc-sa/2.5/au/ or send a letter to
+c Creative Commons, 171 Second Street, Suite 300,
+c San Francisco, California 94105, USA.
+c 
+c This keyboard source file was developed by Vicnet,
+c a division of the State Library of Victoria as part of
+c the Open Road project’s Language enablement initiative.
+c The keyboard layout was developed for the
+c Australian Saay Harari Association.
+c 
+c Release history:
+c 2.1.1   2011-01-xx
+c * added support for exceptions (words that are shapped by Arabic orthography rather than harari orthography)
+c 2.1     2009-09-01
+c * added CTRL-ALT sequences to RALT sequences
+c * added way of typing isolated aleph
+c 2.0     2009-04-09
+c * support for revised Arabic orthography
+c 
+c 
+c Andrew Cunningham    2011-01-20
+c support AT openroad.net.au
+c lang.support AT gmail.com
+
+store(&VERSION) '7.0'
+store(&NAME) 'Harari (Arabi harfi)'
+store(&COPYRIGHT) '© 2011 State Library of Victoria and the Australian Saay Harari Association'
+store(&MESSAGE) 'Harari Unicode keyboard layout, using the Arabic orthography.'
+store(&ETHNOLOGUECODE) 'har'
+store(&WINDOWSLANGUAGES) 'x0401'
+store(&LANGUAGE) 'x0401'
+c store(&KMW_RTL) '1'
+c store(&VISUALKEYBOARD) 'hararab-test-03.kvk'
+store(&BITMAP) 'hararab.ico'
+store(&VISUALKEYBOARD) 'hararab.kvk'
+
+begin Unicode > use(controls)
+
+store(Shadda) U+0651
+store(Sukun) U+0652
+store(Fatha) U+064e       c   "a"
+store(Kasra) U+0650       c   "i" 
+store(Damma) U+064f       c   "u"
+store(Hamza) U+0621
+
+store(vowelsLCKey) "aeiou"
+store(vowelsUCKey) "AEIOU" 
+store(vowelsChar) $Fatha U+065B $Kasra U+065A $Damma
+
+store(stressKey) "\|"
+store(longVowelKey) "[{"    
+store(addConsonantKey) "]}"   
+
+store(consonantKeysLC) "bcdfghjklmnpqrstvwxyz"  
+store(consonantKeysUC) "BCDFGHJKLMNPQRSTVWXYZ"
+store(consonantChars) U+0628 U+069f U+062f U+0641 U+0758 U+062d U+062c U+0643 U+0644 U+0645 U+0646 U+067e U+0642 U+0631 U+0633 U+062a U+06a4 U+0648 U+0637 U+064a U+0632 
+store(digraphChars) U+069b U+0630 U+063a U+06bd U+062e U+0634 U+062b U+06ac U+0698 U+06b9
+store(extendedKeys) U+062f U+062d U+0633 U+0632 U+062a
+store(extendedChars) U+0636 U+0647 U+0635 U+0638 U+062b
+store(extendedCharsTotal) U+0639 U+0636 U+0647 U+0635 U+0638 U+062b
+store(consonant) outs(consonantChars) outs(digraphChars) outs(extendedCharsTotal) U+0629
+store(consonant_shadda) outs(consonant) $Shadda 
+store(char) outs(consonant) outs(vowelsChar) U+065B U+065A U+0621 U+0627 U+0649 U+0623 U+0625
+store(charKeys) outs(vowelsLCKey) outs(vowelsUCKey) outs(stressKey) outs(longVowelKey) outs(addConsonantKey) outs(consonantKeysLC) outs(consonantKeysUC)
+
+store(groupH) "hH"
+store(groupN) "nN" 
+store(groupA) "aA"
+store(groupE) "eE"
+store(groupI) "iI"
+store(groupO) "oO"
+store(groupU) "uU"
+store(groupW) "wW"
+
+store(arabic-digits) "1234567890"  
+store(indic-digits) U+0661 U+0662 U+0663 U+0664 U+0665 U+0666 U+0667 U+0668 U+0669 U+0660
+
+group(controls) using keys
++ [RALT K_0] > U+25cc   c dotted circle   
++ [RALT K_1] > U+200D   c ZWJ -- Zero Width Joiner
++ [RALT K_2] > U+200C   c ZWNJ -- Zero Width Non-Joiner
++ [RALT K_3] > U+200E   c LRM -- Left-to-Right Mark 
++ [RALT K_4] > U+200F   c RLM -- Right-to-Left Mark
++ [RALT K_PERIOD] > U+061e         
+
++ [CTRL ALT K_0] > U+25cc   c dotted circle   
++ [CTRL ALT K_1] > U+200D   c ZWJ -- Zero Width Joiner
++ [CTRL ALT K_2] > U+200C   c ZWNJ -- Zero Width Non-Joiner
++ [CTRL ALT K_3] > U+200E   c LRM -- Left-to-Right Mark 
++ [CTRL ALT K_4] > U+200F   c RLM -- Right-to-Left Mark
++ [CTRL ALT K_PERIOD] > U+061e  
+
+c additional characters required for typing Arabic
++ [RALT K_T] > U+0625     c Arabic letter Alef Hamza Below 
++ [RALT K_G] > U+0623     c Arabic letter Alef Hamza Above
++ [RALT K_B] > U+0671     c Arabic letter Alef Wasla        
++ [RALT K_Z] > U+0626     c Arabic letter Yeh with Hamza Above
++ [RALT K_X] > U+0621     c Arabic letter Hamza
++ [RALT K_C] > U+0624     c Arabic letter Waw with Hamza Above
++ [RALT K_W] > U+064B     c Arabic Fathatan
++ [RALT K_S] > U+064D     c Arabic Kasratan
++ [RALT K_R] > U+064C     c Arabic Dammatan 
++ [RALT K_A] > U+0627     c Arabic Alef  
++ [RALT K_M] > U+0629     c Arabic Teh Marbuta
+
++ [CTRL ALT K_T] > U+0625     c Arabic letter Alef Hamza Below 
++ [CTRL ALT K_G] > U+0623     c Arabic letter Alef Hamza Above
++ [CTRL ALT K_B] > U+0671     c Arabic letter Alef Wasla        
++ [CTRL ALT K_Z] > U+0626     c Arabic letter Yeh with Hamza Above
++ [CTRL ALT K_X] > U+0621     c Arabic letter Hamza
++ [CTRL ALT K_C] > U+0624     c Arabic letter Waw with Hamza Above
++ [CTRL ALT K_W] > U+064B     c Arabic Fathatan
++ [CTRL ALT K_S] > U+064D     c Arabic Kasratan
++ [CTRL ALT K_R] > U+064C     c Arabic Dammatan 
++ [CTRL ALT K_A] > U+0627     c Arabic Alef 
++ [CTRL ALT K_M] > U+0629     c Arabic Teh Marbuta
+
+nomatch > use(exceptions)
+
+
+group(exceptions) using keys
+c Words that do not completely follow Harari orthographic rules.
+
+nomatch > use(main)
+
+
+group(main) using keys
+                                                               
+c Digraphs
+
+U+069f $Shadda + any(groupH) > U+069b $Shadda c cch
+U+069f $Sukun + any(groupH) > U+069b $Sukun use(shadda)    c  ch
+U+069f + any(groupH) > U+069b $Sukun use(shadda)    c  ch 
+U+069f $Sukun any(stressKey) + any(groupH) > U+069f $Sukun U+062d $Sukun use(shadda)    c  c'h
+U+069f any(stressKey) + any(groupH) > U+069f $Sukun U+062d $Sukun use(shadda)           c  c'h - should there be a sukun on initial consonant? can word start with c'h?
+U+069f $Sukun any(stressKey) U+069f + any(groupH) > U+069f $Sukun U+069b $Sukun use(shadda)    c c'ch
+U+069f any(stressKey) U+069f + any(groupH) > U+069f $Sukun U+069b $Sukun use(shadda)    c c'ch - should there be a sukun on initial consonant? can word start with c'ch?
+
+U+062f $Shadda + any(groupH) > U+0630 $Shadda    c  ddh
+U+062f $Sukun + any(groupH) > U+0630 $Sukun use(shadda)    c  dh
+U+062f + any(groupH) > U+0630 $Sukun use(shadda)    c  dh 
+U+062f $Sukun any(stressKey) + any(groupH) > U+062f $Sukun U+062d $Sukun use(shadda)    c  d'h
+U+062f any(stressKey) + any(groupH) > U+062f $Sukun U+062d $Sukun use(shadda)    c  d'h - should there be a sukun on initial consonant? 
+U+062f $Sukun any(stressKey) U+062f + any(groupH) > U+062f $Sukun U+0630 $Sukun use(shadda)    c  d'dh
+U+062f any(stressKey) U+062f + any(groupH) > U+062f $Sukun U+0630 $Sukun use(shadda)    c  d'dh - should there be a sukun on initial consonant?           
+
+U+0758 $Shadda + any(groupH) > U+063A $Shadda    c  ggh 
+U+0758 $Sukun + any(groupH) > U+063a $Sukun use(shadda)    c  gh 
+U+0758 + any(groupH) > U+063a $Sukun use(shadda)    c  gh 
+U+0758 $Sukun any(stressKey) + any(groupH) > U+0758 $Sukun U+062d $Sukun use(shadda)    c g'h
+U+0758 any(stressKey) + any(groupH) > U+0758 $Sukun U+062d $Sukun use(shadda)    c g'h - should there be a sukun on initial consonant? 
+U+0758 $Sukun any(stressKey) U+0758 + any(groupH) > U+0758 $Sukun U+063A $Sukun use(shadda)    c g'gh
+U+0758 any(stressKey) U+0758 + any(groupH) > U+0758 $Sukun U+063A $Sukun use(shadda)    c g'gh
+
+U+0758 $Shadda + any(groupN) > U+06b9 $Shadda    c ggn
+U+0758 $Sukun + any(groupN) > U+06b9 $Sukun use(shadda)    c  gn
+U+0758 + any(groupN) > U+06b9 $Sukun use(shadda)    c  gn
+U+0758 $Sukun any(stressKey) + any(groupN) > U+0758 $Sukun U+0646 $Sukun use(shadda)    c g'n
+U+0758 any(stressKey) + any(groupN) > U+0758 $Sukun U+0646 $Sukun use(shadda)    c g'n
+U+0758 $Sukun any(stressKey) U+0758 + any(groupN) > U+0758 $Sukun U+06b9 $Sukun use(shadda)    c g'gn
+U+0758 any(stressKey) U+0758 + any(groupN) > U+0758 $Sukun U+06b9 $Sukun use(shadda)    c g'gn
+
+U+0643 $Shadda + any(groupH) > U+062e $Shadda    c kkh
+U+0643 $Sukun + any(groupH) > U+062e $Sukun use(shadda)    c  kh
+U+0643 + any(groupH) > U+062e $Sukun use(shadda)    c  kh
+U+0643 $Sukun any(stressKey) + any(groupH) > U+0643 $Sukun U+062d $Sukun use(shadda)    c k'h
+U+0643 any(stressKey) + any(groupH) > U+0643 $Sukun U+062d $Sukun use(shadda)    c k'h
+U+0643 $Sukun any(stressKey) U+0643 + any(groupH) > U+0643 $Sukun U+062e $Sukun use(shadda)    c k'kh
+U+0643 any(stressKey) U+0643 + any(groupH) > U+0643 $Sukun U+062e $Sukun use(shadda)    c k'kh
+
+U+0633 $Shadda + any(groupH) > U+0634 $Shadda    c ssh
+U+0633 $Sukun + any(groupH) > U+0634 $Sukun use(shadda)    c  sh 
+U+0633 + any(groupH) > U+0634 $Sukun use(shadda)    c  sh
+U+0633 $Sukun any(stressKey) + any(groupH) > U+0633 $Sukun U+062d $Sukun use(shadda)    c s'h
+U+0633 any(stressKey) + any(groupH) > U+0633 $Sukun U+062d $Sukun use(shadda)    c s'h
+U+0633 $Sukun any(stressKey) U+0633 + any(groupH) > U+0633 $Sukun U+0634 $Sukun use(shadda)   c s'sh
+U+0633 any(stressKey) U+0633 + any(groupH) > U+0633 $Sukun U+0634 $Sukun use(shadda)  c s'sh
+
+U+0637 $Shadda + any(groupH) > U+06ac $Shadda    c xxh
+U+0637 $Sukun + any(groupH) > U+06ac $Sukun use(shadda)    c  xh
+U+0637 + any(groupH) > U+06ac $Sukun use(shadda)    c  xh 
+U+0637 $Sukun any(stressKey) + any(groupH) > U+0637 $Sukun U+062d $Sukun use(shadda)    c x'h
+U+0637 any(stressKey) + any(groupH) > U+0637 $Sukun U+062d $Sukun use(shadda)    c x'h
+U+0637 $Sukun any(stressKey) U+0637 + any(groupH) > U+0637 $Sukun U+06ac $Sukun use(shadda)   c x'xh
+U+0637 any(stressKey) U+0637 + any(groupH) > U+0637 $Sukun U+06ac $Sukun use(shadda)  c x'xh
+
+U+0632 $Shadda + any(groupH) > U+0698 $Shadda    c zzh
+U+0632 $Sukun + any(groupH) > U+0698 $Sukun use(shadda)    c  zh 
+U+0632 + any(groupH) > U+0698 $Sukun use(shadda)    c  zh
+U+0632 $Sukun any(stressKey) + any(groupH) > U+0632 $Sukun U+062d $Sukun use(shadda)    c z'h
+U+0632 any(stressKey) + any(groupH) > U+0632 $Sukun U+062d $Sukun use(shadda)    c z'h
+U+0632 $Sukun any(stressKey) U+0632 + any(groupH) > U+0632 $Sukun U+0698 $Sukun use(shadda)   c z'zh
+U+0632 any(stressKey) U+0632 + any(groupH) > U+0632 $Sukun U+0698 $Sukun use(shadda)  c z'zh
+
+c Punctuation
++ "," > U+060c
++ "." > U+06d4
++ "?" > U+061f
++ ";" > U+061b
++ ":" > nul beep
++ "%" > U+066a
+
+c Digits
++ any(arabic-digits) > index(indic-digits,1)
+any(indic-digits) U+06d4 + any(arabic-digits) > context(1) U+066b index(indic-digits,3)
+any(indic-digits) U+060c + any(arabic-digits) > context(1) U+066c index(indic-digits,3)
+  
+c Consonants - non digraph
++ any(consonantKeysLC) > index(consonantChars,1) $Sukun use(shadda) 
++ any(consonantKeysUC) > index(consonantChars,1) $Sukun use(shadda)
+
+any(extendedKeys) $Sukun + any(addConsonantKey) > index(extendedChars,1) $Sukun use(shadda)
+any(extendedKeys) + any(addConsonantKey) > index(extendedChars,1) $Sukun use(shadda)
+
+c ensure that isolated vowel comes after a long o or long u
+U+06c6 U+0648 + any(groupA) > context U+0623 U+064e
+U+065A U+0648 + any(groupA) > context U+0623 U+064e
+U+064f U+0648 + any(groupA) > context U+0623 U+064e
+
+U+06c6 U+0648 + any(groupE) > context U+0625 U+065b
+U+065A U+0648 + any(groupE) > context U+0625 U+065b
+U+064f U+0648 + any(groupE) > context U+0625 U+065b 
+
+U+06c6 U+0648 + any(groupI) > context U+0625 U+0650
+U+065A U+0648 + any(groupI) > context U+0625 U+0650
+U+064f U+0648 + any(groupI) > context U+0625 U+0650
+
+U+06c6 U+0648 + any(groupO) > context U+0623 U+065a
+U+065A U+0648 + any(groupO) > context U+0623 U+065a
+U+064f U+0648 + any(groupO) > context U+0623 U+065a
+
+U+06c6 U+0648 + any(groupU) > context U+0623 U+064f
+U+065A U+0648 + any(groupU) > context U+0623 U+064f
+U+064f U+0648 + any(groupU) > context U+0623 U+064f
+
+
+c For long o and long u, prevent a following waw to produce a waw shadda
+U+06c6 U+0648 + any(groupW) > context U+0648 $Sukun
+U+065A U+0648 + any(groupW) > context U+0648 $Sukun
+U+064f U+0648 + any(groupW) > context U+0648 $Sukun
+
+c Produce core consonants and dependant vowels
+any(consonant) $Sukun + any(vowelsLCKey) > context(1) index(vowelsChar,3) 
+any(consonant) + any(vowelsLCKey) > context index(vowelsChar,2)
+$Shadda + any(vowelsLCKey) > context(1) index(vowelsChar,2)
+any(consonant) $Sukun + any(vowelsLCKey) > context(1) index(vowelsChar,3)
+any(consonant) + any(vowelsLCKey) > context index(vowelsChar,2)
+$Shadda + any(vowelsUCKey) > context(1) index(vowelsChar,2) 
+
+U+25cc + any(vowelsLCKey) > context(1) index(vowelsChar,2)
+U+25cc + any(vowelsUCKey) > context(1) index(vowelsChar,2)
+ 
+U+0623 U+064e + any(longVowelKey) > $Hamza U+064e U+0627 c long independant a - change U+0623 to HAMZA and add ALEF
+U+064e + any(longVowelKey) > context U+0627              c long a - add ALEF
+U+06ce + any(longVowelKey) > context U+0649              c long e - add ALEF MAKSURA
+U+065B + any(longVowelKey) > context U+0649              c ALTERNATIVE LONG-E
+U+0650 + any(longVowelKey) > context U+0649              c long i - add ALEF MAKSURA
+U+06c6 + any(longVowelKey) > context U+0648              c long o - add WAW  
+U+065A + any(longVowelKey) > context U+0648              c ALTERNATIVE LONG-O
+U+064f + any(longVowelKey) > context U+0648              c long u - add WAW    
+
+c stressed vowels
+U+064e U+0627 + any(stressKey) > context $Hamza U+0652    c stressed long "a" - add HAMZA + SUKUN 
+U+0623 U+064e + any(stressKey) > $Hamza context(2) U+0623 U+0652           c stressed "a" - add ALEF-HAMZA-ABOVE + SUKUN
+U+064e + any(stressKey) > context U+0623 U+0652           c stressed "a" - add ALEF-HAMZA-ABOVE + SUKUN
+
+U+06ce U+0649 + any(stressKey) > context $Hamza U+0652    c stressed long "e" - add HAMZA + SUKUN
+U+0625 U+06ce + any(stressKey) > $Hamza context(2) U+0649 U+0654 $Sukun           c stressed "e" - add ALEF MAKSURA + COMBINING HAMZA ABOVE + SUKUN 
+U+06ce + any(stressKey) > context U+0649 U+0654 $Sukun           c stressed "e" - add ALEF MAKSURA + COMBINING HAMZA ABOVE + SUKUN 
+U+065b U+0649 + any(stressKey) > context $Hamza U+0652    c stressed long "e" - add HAMZA + SUKUN
+U+0625 U+065b + any(stressKey) > $Hamza context(2) U+0649 U+0654 $Sukun           c stressed "e" - add ALEF MAKSURA + COMBINING HAMZA ABOVE + SUKUN 
+U+065b + any(stressKey) > context U+0649 U+0654 $Sukun           c stressed "e" - add ALEF MAKSURA + COMBINING HAMZA ABOVE + SUKUN 
+  
+U+0650 U+0649 + any(stressKey) > context $Hamza U+0652    c stressed long "i" - add HAMZA + SUKUN
+U+0625 U+0650 + any(stressKey) > $Hamza context(2) U+0649 U+0654 $Sukun           c stressed "i" - add ALEF MAKSURA + COMBINING HAMZA ABOVE + SUKUN
+U+0650 + any(stressKey) > context U+0649 U+0654 $Sukun           c stressed "i" - add ALEF MAKSURA + COMBINING HAMZA ABOVE +  
+
+U+06c6 U+0648 + any(stressKey) > context $Hamza U+0652    c stressed long "o" - add HAMZA + SUKUN
+U+0623 U+06c6 + any(stressKey) > $Hamza context(2) U+0624 $Sukun           c stressed "o" - add WAW + COMB. HAMZA ABOVE + SUKUN
+U+06c6 + any(stressKey) > context U+0624 $Sukun           c stressed "o" - add WAW + COMB. HAMZA ABOVE + SUKUN
+U+065a U+0648 + any(stressKey) > context $Hamza U+0652    c stressed long "o" - add HAMZA + SUKUN
+U+0623 U+065a + any(stressKey) > $Hamza context(2) U+0624 $Sukun           c stressed "o" - add WAW + COMB. HAMZA ABOVE + SUKUN
+U+065a + any(stressKey) > context U+0624 $Sukun           c stressed "o" - add WAW + COMB. HAMZA ABOVE + SUKUN
+
+U+064f U+0648 + any(stressKey) > context $Hamza U+0652    c stressed long "u" - add HAMZA + SUKUN
+U+0623 U+064f + any(stressKey) > $Hamza context(2) U+0624 $Sukun           c stressed "u" - add WAW + COMB. HAMZA ABOVE + SUKUN
+U+064f + any(stressKey) > context U+0624 $Sukun           c stressed "u" - add WAW + COMB. HAMZA ABOVE + SUKUN
+
+c independant vowels + "ȧ"
+U+0627 + any(groupA) > U+0627 $Hamza U+064e
++ any(groupA) > U+0623 U+064e                                c isolated "a"
+any(stressKey) + any(groupA) > U+0623 U+064e                 c isolated "a"
+U+0623 U+064e + any(addConsonantKey) > U+0639                c "ȧ" 
+U+0621 U+064e + any(addConsonantKey) > U+0639                c "ȧ" 
+U+064e + any(addConsonantKey) > U+0639 use(shadda)           c "ȧ" also   
+
+U+0627 + any(groupE) > U+0627 $Hamza U+065b
++ any(groupE) > U+0625 U+065b                                c isolated "e"
+any(stressKey) + any(groupE) > U+0625 U+065b                 c isolated "e" 
+
+U+0627 + any(groupI) > U+0627 $Hamza U+0650
++ any(groupI) > U+0625 U+0650                                c isolated "i"
+any(stressKey) + any(groupI) > U+0625 U+0650                 c isolated "i"
+ 
+U+0627 + any(groupO) > U+0627 $Hamza U+065a
++ any(groupO) > U+0623 U+065a                                c isolated "o"
+any(stressKey) + any(groupO) > U+0623 U+065a                 c isolated "o"
+
+U+0627 + any(groupU) > U+0627 $Hamza U+064f 
++ any(groupU) > U+0623 U+064f                                c isolated "u"
+any(stressKey) + any(groupU) > U+0623 U+064f                 c isolated "u" 
+
+group(shadda)
+any(consonant) context(1) $Sukun > context(1) $Shadda
+any(consonant) $Sukun context(1) $Sukun > context(1) $Shadda
+nomatch > use(final)
+
+group(final)
+notany(char) any(consonant) $sukun > context(1) context(2)
+nul any(consonant) $sukun > context(1)   
+
+c EOF

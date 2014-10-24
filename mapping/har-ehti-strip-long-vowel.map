@@ -1,0 +1,26 @@
+﻿; This file was created by <author> using TECkitMappingEditorU.exe v3.0.1.0 on 10/11/2008.
+;   Conversion Type = Unicode_to_Unicode
+;   Left-hand side font = Abyssinica SIL;11.25
+;   Right-hand side font = Abyssinica SIL;11.25
+;   Main Window Position = 0,0,650,738
+;   Left-hand side Character Map Window Position = 650,0,374,536
+;   Right-hand side Character Map Window Position = 652,255,372,483
+
+LHSName                 "Harari-Ethiopic-New"
+RHSName                 "Harari-Ethiopic-Old"
+LHSDescription          "Hrari long vowel marker"
+RHSDescription          "Old orthography"
+Version                 "1"
+Contact                 "mailto:user@addr"
+RegistrationAuthority   "State Library of Victoria"
+RegistrationName        "Strip_Harari_long_vowels"
+Copyright               "© 2008 State Library of Victoria. All rights reserved."
+LHSFlags                ()
+RHSFlags                ()
+
+pass(Unicode)
+
+; type a 'k' in the 'Left-side Sample' box below to see how this works.
+
+፤ "ኧ" >   ""
+U+0302  <>   ""

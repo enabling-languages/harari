@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+<!-- XXX:TODO Add installer for Harari transliteration mapping files -->
+<!--
+
+7880422a-85b1-4b9b-8473-2107500ee94b
+a24d248a-7862-46c3-8232-5127e5a1d57a
+9248b04b-b166-4dcd-b77a-43a2962cd594
+159354af-9029-4175-8d0c-36572d5d22ca
++++
+1d97d5f9-e8f4-4a1a-a005-6ab17f384d1a
+9e6377cf-3395-43e1-810b-7cac75952bf4
+26e2c4c3-f2b8-4719-8fa4-1218a3cb2c89
+10a06725-aed2-4192-8fda-b487015d526d
+35a23e13-3173-4cca-a9b7-b93c998fe4b8
+92a022a8-694f-4edf-b548-3badb69220d2
+
+From http://www.famkruithof.net/uuid/uuidgen
+
+
+Info on using WiX:
+http://wix.sourceforge.net/manual-wix3/main.htm
+http://www.tramontana.co.hu/wix/
+
+
+-->
+
+<Product Id='7880422a-85b1-4b9b-8473-2107500ee94b' Name='Harari Transliteration Tools 1.0' Language='1033' Codepage='65001' Version='1.0.0.0' Manufacturer='State Library of Victoria' UpgradeCode='a24d248a-7862-46c3-8232-5127e5a1d57a' >
+    
+	<Package Description='Harari Transliteration Tables' Comments='Mapping tables for Harari transliteration' Manufacturer='State Library of Victoria' InstallerVersion='200' Compressed='yes' />
+
+	<Media Id='1' Cabinet='product.cab' EmbedCab='yes' />
+
+	<Directory Id='TARGETDIR' Name='SourceDir'>
+		<Directory Id='CommonAppDataFolder' Name='ProgramData'>
+			    <Directory Id='SILDir' Name='SIL'>
+				    <Directory Id='ConvDir' Name='SILConverters31'>
+						<Directory Id='INSTALLDIR' Name='MapsTables'>
+								<Component Id='harConvFiles' Guid='9248b04b-b166-4dcd-b77a-43a2962cd594'>
+									<File Id='latn2ethi' Name='har-latn2ethi.tec' DiskId='1' Source='har-latn2ethi.tec' />
+									<File Id='convInstall' Name='Harari_Converters.xml' DiskId='1' Source='Harari Converters.xml' />
+								</Component>
+								<Component Id='harDocumentation' Guid='159354af-9029-4175-8d0c-36572d5d22ca'>
+									<File Id='usermanual' Name='harari-translit.pdf' DiskId='1' Source='harari-translit.pdf'>
+										<!-- <Shortcut Id="startmenuHarManual" Directory="ProgramMenuDir" Name="How to sue Harari"
+                  WorkingDirectory='INSTALLDIR' Icon="Foobar10.exe" IconIndex="0" Advertise="yes" />
+										<Shortcut Id="desktopHarManual" Directory="DesktopFolder" Name="Harari converters" WorkingDirectory='INSTALLDIR' Icon="harari-translit.pdf" IconIndex="0" Advertise="yes" /> -->
+									</File>
+								</Component>
+					    	</Directory>
+				    </Directory>
+			    </Directory>
+		</Directory>
+	</Directory>
+
+    <Feature Id='Complete' Title='Harari Converters 1.0' Description='The complete package.' Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
+		<Feature Id='harEthiopic' Title='Harari transliteration tables' Description='Transliteration mapping files' Level='1'>
+			<ComponentRef Id='harConvFiles' />
+		</Feature>
+		<Feature Id='userDoc' Title='User manual' Description='How to use Harari converters' Level='1000'>
+			<ComponentRef Id='harDocumentation' />
+		</Feature>
+	</Feature>
+
+<UIRef Id="WixUI_Mondo" />
+<UIRef Id="WixUI_ErrorProgressText" />
+<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+<WixVariable Id="WixUILicenseRtf" Value="inc\lgpl-3.0.rtf" />
+<WixVariable Id="WixUIDialogBmp" Value="inc\vicnet.bmp" />
+
+
+<!-- <Property Id='SetupSC'>%ProgramData%\SIL\SILConverters31\SetupSC.exe</Property> 
+<CustomAction Id='LaunchFile' Property='SetupSC' ExeCommand='' Return='asyncNoWait' /> -->
+<CustomAction Id='LaunchFile' Directory='ConvDir' ExeCommand='[CommonAppDataFolder]\SIL\SILConverters31\SetupSC.exe' Return='asyncNoWait' />
+<InstallExecuteSequence>
+	<Custom Action="LaunchFile" After="InstallFinalize" />
+</InstallExecuteSequence>
+
+</Product>
+</Wix>

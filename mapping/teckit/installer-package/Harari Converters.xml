@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SILConvertersInstallerDetails xmlns="http://www.sil.org/computing/schemas/SILConvertersInstallerDetails.xsd">
+    <MapsTables>
+        <MapTable description="Harari Latin to Harari Ethiopic transliteration">
+            <autoInstall mappingName="Harari Latin&lt;&gt;Ethiopic" converterSpec="MapsTables\har-latn2ethi.tec" IsConverterSpecAFile="true" implementType="SIL.tec" conversionType="UnicodeToFromUnicode" leftEncoding="UNICODE Latin" rightEncoding="UNICODE Ethiopic" processType="Transliteration" sampleData="Harari harfi"></autoInstall>
+            <FilesToInstall>
+                <FileToInstall filename="MapsTables\har-latn2ethi.tec"></FileToInstall>
+            </FilesToInstall>
+        </MapTable>
+    </MapsTables>
+</SILConvertersInstallerDetails>
